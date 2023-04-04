@@ -55,6 +55,10 @@ Route::get('/showsubcategory', function () {
     return view('admin.showsubcategory');
 });
 
+Route::get('/usercart', function () {
+    return view('admin.showsubcategory');
+});
+
 Route::get('/showproduct', function () {
     return view('admin.showproduct');
 });
@@ -93,8 +97,8 @@ Route::get('/register', function () {
 });
 
 
-Route::get('/', function () {
-    return view('user.userhome');
+Route::get('/usercart', function () {
+    return view('user.usercart');
 });
 
 
