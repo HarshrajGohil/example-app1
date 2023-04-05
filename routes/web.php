@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\CategoryController;
+
+use App\Http\Controllers\SubcategoryController;
+
+use App\Http\Controllers\ProductController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,21 +53,38 @@ Route::get('/addreview', function () {
     return view('admin.addreview');
 }); 
 
-Route::get('/showcategory', function () {
-    return view('admin.showcategory');
-});
+// Route::get('/showcategory', function () {
+//     return view('admin.showcategory');
+// });
 
-Route::get('/showsubcategory', function () {
-    return view('admin.showsubcategory');
-});
+
+Route::resources([
+    'category' => CategoryController::class,
+    
+]);
+
+Route::resources([
+    'subcategory' => SubcategoryController::class,
+    
+]);
+
+//Route::get('/showsubcategory', function () {
+//    return view('admin.showsubcategory');
+//});
 
 Route::get('/usercart', function () {
     return view('admin.showsubcategory');
 });
 
-Route::get('/showproduct', function () {
-    return view('admin.showproduct');
-});
+Route::resources([
+    'product' => ProductController::class,
+    
+]);
+
+
+//Route::get('/showproduct', function () {
+//    return view('admin.showproduct');
+//});
 
 Route::get('/showreview', function () {
     return view('admin.showreview');
@@ -71,8 +94,7 @@ Route::get('/adminlogin', function () {
     return view('admin.adminlogin');
 });
 
-Route::get('/usermaster', function () {
-    return view('user.usermaster');
+Route::get('/usermaster', function () {return view('user.usermaster');
 });
 
 Route::get('/', function () {

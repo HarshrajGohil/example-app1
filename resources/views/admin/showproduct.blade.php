@@ -27,21 +27,21 @@
                         <th scope="col">Product Price</th>
                         <th scope="col">Product Quantity</th>
                         <th scope="col">Product Measurement</th>
-                        <th scope="col">Category Id</th>
+                        <th scope="col">Category Name</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                 
+                 @foreach($prod as $value)
                     <tr>
                         <td><input class="form-check-input" type="checkbox"></td>
-                        <td>Fun Toys</td>
-                        <td>Fun Toys is for puppies</td>
-                        <td>1.png</td>
-                        <td>500</td>
-                        <td>1</td>
-                        <td>500gm</td>
-                        <td>1</td>
+                        <td>{{ $value['pro_name']}}</td>
+                        <td>{{ $value['pro_desc']}}</td>
+                        <td>{{ $value['pro_image']}}</td>
+                        <td>{{ $value['pro_price']}}</td>
+                        <td>{{ $value['pro_quantity']}}</td>
+                        <td>{{ $value['pro_measurement']}}</td>
+                        <td>{{ $value['sub_cate_name']}}</td>
                         
                         <td><a class="" href="">
                                 
@@ -55,8 +55,12 @@
 
                         </td>
                     </tr>
+                     @endforeach
                 </tbody>
             </table>
+            <div class="d-flex justify-content-center">
+    {{ $prod->links() }}
+    </div>
         </div>
     </div>
 </div>

@@ -23,18 +23,19 @@
                         <th scope="col"><input class="form-check-input" type="checkbox"></th>
                         <th scope="col">SubCategory Name</th>
                         <th scope="col">SubCatgeory Description</th>
-                        <th scope="col">Category Id</th>
+                        <th scope="col">Category Name </th>
                        
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
+                @foreach($subcat as $value)
                  
                     <tr>
                         <td><input class="form-check-input" type="checkbox"></td>
-                        <td>Demo</td>
-                        <td>Demo Data</td>
-                        <td>1.png</td>
+                        <td>{{ $value['sub_cate_name']}}</td>
+                        <td>{{ $value['sub_cate_desc']}}</td>
+                        <td>{{ $value['cate_name']}}</td>
                         
                         <td><a class="" href="">
                                 
@@ -48,8 +49,13 @@
 
                         </td>
                     </tr>
+                     @endforeach
                 </tbody>
             </table>
+        <br><div class="d-flex justify-content-center"></br>
+            {{ $subcat->links() }}
+            </div>
+        
         </div>
     </div>
 </div>

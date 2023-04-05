@@ -1,5 +1,6 @@
 @extends('admin.master')
 @section('content')
+
 <div class="container-fluid pt-4 px-4">
     
 </div>
@@ -25,16 +26,24 @@
                         <th scope="col">Catgeory Description</th>
                         <th scope="col">Category Image</th>
                        
+                    
+                    
+                    
+                    
+                    
                         <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                  
-                    <tr>
+
+                 @foreach($cat as $value) 
+
+                  <tr>
                         <td><input class="form-check-input" type="checkbox"></td>
-                        <td>Demo</td>
-                        <td>Demo Data</td>
-                        <td>1.png</td>
+                        <td>{{ $value['cate_name']}}</td>
+                        <td>{{ $value['cate_desc']}}</td>
+                        <td>{{ $value['cate_image']}}</td>
                         
                         <td><a class="" href="">
                                 
@@ -48,8 +57,17 @@
 
                         </td>
                     </tr>
+                    
+                 @endforeach
+                   
+
+
                 </tbody>
-            </table>
+            </table> 
+
+{{ $cat->links() }}
+
+
         </div>
     </div>
 </div>

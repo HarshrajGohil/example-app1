@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Category;
+use App\Models\Subcategory;
 
-class CategoryController extends Controller
+class SubcategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,13 +15,14 @@ class CategoryController extends Controller
     public function index()
     {
         //
-
-        echo "hello data ";
-        $data = Category::paginate(2);
+        
+        $data = Subcategory::
+        join('category', 'category.id', '=', 'subcategory.cat_id')->
+        paginate(2);
 
         
-        return view('admin.showcategory',['cat'=>$data]);
-        
+        return view('admin.showsubcategory',['subcat'=>$data]);
+
     }
 
     /**
