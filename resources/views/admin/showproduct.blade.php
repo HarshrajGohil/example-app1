@@ -27,7 +27,7 @@
                         <th scope="col">Product Price</th>
                         <th scope="col">Product Quantity</th>
                         <th scope="col">Product Measurement</th>
-                        <th scope="col">Category Name</th>
+                        <th scope="col">Subcategory Name</th>
                         <th scope="col">Action</th>
                     </tr>
                 </thead>

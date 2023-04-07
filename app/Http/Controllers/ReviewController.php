@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Review;
+use App\Models\Product;
 use App\Models\User;
 
-class UserController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +17,13 @@ class UserController extends Controller
     public function index()
     {
         //
-        $data = User::paginate(2);
-        return view('admin.showuser',['user'=>$data]);
+        $data = Review::
+        join('user', 'user.id', '=', 'review.user_id')-> 
+        join('product', 'product.id', '=', 'review.product_id')->
+
+        paginate(2);
+
+        return view('admin.showreview',['rev'=>$data]);
     }
 
     /**
@@ -27,7 +34,12 @@ class UserController extends Controller
     public function create()
     {
         //
+        $data = Product::get();
+        $user = User::get();
 
+
+        return view('admin.addreview',['pro'=>$data,'user'=>$user]);
+        
     }
 
     /**
@@ -39,6 +51,20 @@ class UserController extends Controller
     public function store(Request $request)
     {
         //
+        $rev = new Product;
+ 
+        $rev->rev_desc = $request->rev_desc; 
+        $rev->rev_stars = $request->rev_stars; 
+        $rev->user_name = $request->user_name;
+        $rev->pro_name = $request->pro_name; 
+    
+
+        $rev->save();
+        return redirect('/review');
+
+
+ 
+        $flight->save();
     }
 
     /**

@@ -1,57 +1,39 @@
 
 @extends('admin.master')
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <!-- Libraries Stylesheet -->
-     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-     <!-- Template Stylesheet -->
-     <link href="css/style.css" rel="stylesheet">
-
-      <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
 <div class="container-fluid pt-4 px-4" class="center">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Basic Form</h6>
-                            <form method="post">
+                            
+                            <form method="post" action = {{ route('review.store') }}>
+                              @csrf
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Review Description</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="name" name="">
+                                        aria-describedby="name" name="rev_desc">
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Review Stars</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1" name="">
+                                    <input type="text" class="form-control" id="exampleInputPassword1" name="rev_stars">
                                 </div>
 
                                     <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">User id </label>
-                                    <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <label for="exampleInputPassword1" class="form-label">User Name </label>
+                                    <select class="form-select" aria-label="Default select example" name="user_name">
+                                     @foreach($user as  $u)
+                                     <option value={{$u['id']}}>{{$u['first_name']}} {{$u['last_name']}}</option>
+                                     @endforeach
                                 </select>
                                 </div>
                                     <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Product id </label>
-                                    <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <label for="exampleInputPassword1" class="form-label">Product Name </label>
+                                    <select class="form-select" aria-label="Default select example" name="pro_name">
+                                     @foreach($pro as  $p)
+                                     <option value={{$p['id']}}>{{$p['pro_name']}}</option>
+                                     @endforeach
                                 </select>
                                     
                                 </div>

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Product;
+use App\Models\Product; 
+use App\Models\Subcategory;
+
 
 class ProductController extends Controller
 {
@@ -29,7 +31,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        // 
+        $data = Subcategory::get();
+
+        return view('admin.addproduct',['subcat'=>$data]);
     }
 
     /**
@@ -41,6 +46,22 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         //
+        $prod = new Product;
+ 
+        $prod->pro_name = $request->pro_name; 
+        $prod->pro_desc = $request->pro_desc; 
+        $prod->pro_image = $request->pro_image;
+        $prod->pro_price = $request->pro_price; 
+        $prod->pro_quantity = $request->pro_quan; 
+        $prod->pro_measurement = $request->pro_meas; 
+        $prod->cat_id = $request->subcat_name; 
+
+        $prod->save();
+        return redirect('/product');
+
+
+ 
+        $flight->save();
     }
 
     /**

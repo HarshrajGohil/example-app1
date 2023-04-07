@@ -1,49 +1,32 @@
 
 @extends('admin.master')
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-     <!-- Libraries Stylesheet -->
-     <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
-     <!-- Template Stylesheet -->
-     <link href="css/style.css" rel="stylesheet">
-
-      <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
 <div class="container-fluid pt-4 px-4" class="center">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
-                            <h6 class="mb-4">Basic Form</h6>
-                            <form method="post">
+                            
+                            <form method="post" action = {{ route('subcategory.store') }}>
+                             @csrf
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">SubCategory Name</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="name" name="">
+                                        aria-describedby="name" name="sub_cate_name">
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">SubCatgegory Description</label>
-                                    <textarea type="text" class="form-control" id="exampleInputPassword1" name=""></textarea>
+                                    <textarea type="text" class="form-control" id="exampleInputPassword1" name="sub_cate_desc"></textarea>
                                 </div>
 
                                     <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Catgeory Id</label>
-                                <select class="form-select" aria-label="Default select example">
-  <option selected>Open this select menu</option>
-  <option value="1">One</option>
-  <option value="2">Two</option>
-  <option value="3">Three</option>
-</select>
+                                    <label for="exampleInputPassword1" class="form-label">Catgeory Name</label>
+                                <select class="form-select" aria-label="Default select example" name="cate_name">
+                                @foreach($cat as  $c)
+                                <option value={{$c['id']}}>{{$c['cate_name']}}</option>
+                                @endforeach
+                                </select>
                                 </div>
                                
                                <center> <button type="submit" class="btn btn-primary" name="submit">Add SubCategory</button></center>

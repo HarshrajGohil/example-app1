@@ -64,8 +64,11 @@
 
                 </tbody>
             </table> 
+             <br><div class="d-flex justify-content-center"></br>
 
-{{ $cat->links() }}
+        {{ $cat->links() }}
+        </div>
+
 
 
         </div>

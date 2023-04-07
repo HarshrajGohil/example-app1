@@ -21,24 +21,30 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="{{ URL::asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet"> 
+        <link href="{{ URL::asset('lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet">
+
+    {{-- <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" /> --}}
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    {{-- <link href="css/bootstrap.min.css" rel="stylesheet">  --}}
+            <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
+
 
     <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    {{-- <link href="css/style.css" rel="stylesheet">  --}}
+                <link href="{{ URL::asset('css/style.css') }}" rel="stylesheet">
+
 </head>
 
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
         <!-- Spinner Start -->
-        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        {{-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
-        </div>
+        </div> --}}
         <!-- Spinner End -->
 
 
@@ -60,14 +66,14 @@
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="dashboard" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="{{ route('user1.index') }}"><i class="fa fa-tachometer-alt me-2"></i>Show User</a>
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                         <i class="fas fa-dog"></i>
                         Category</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Add Category</a>
-                            <a href="typography.html" class="dropdown-item">Show Category</a>
-                            <a href="element.html" class="dropdown-item">Other Elements</a>
+                            <a href="{{ route('category.create') }}" class="dropdown-item">Add Category</a>
+                            <a href="{{ route('category.index') }}" class="dropdown-item">Show Category</a>
                         </div>
                     </div>
 
@@ -76,9 +82,9 @@
                         <i class="fas fa-dog"></i>
                         SubCategory</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">
+                            <a href="{{ route('subcategory.create') }}" class="dropdown-item">
                             Add SubCategory</a>
-                            <a href="typography.html" class="dropdown-item">Show SubCategory</a>
+                            <a href="{{ route('subcategory.index') }}" class="dropdown-item">Show SubCategory</a>
                             
                         </div>
                     </div>
@@ -88,8 +94,8 @@
                         <i class="fas fa-bone"></i>
                         Product</a>
                         <div class="dropdown-menu bg-transparent border-0"> 
-                            <a href="button.html" class="dropdown-item">Add Product</a>
-                            <a href="typography.html" class="dropdown-item">Show Product</a>
+                            <a href="{{ route('product.create') }}" class="dropdown-item">Add Product</a>
+                            <a href="{{ route('product.index') }}"  class="dropdown-item">Show Product</a>
                             
                         </div>
                     </div>
@@ -99,8 +105,8 @@
                         <i class="fas fa-star"></i>
                         Review</a>
                         <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Add Review</a>
-                            <a href="typography.html" class="dropdown-item">Show Review</a>
+                            <a href="{{ route('review.create') }}"  class="dropdown-item">Add Review</a>
+                            <a href="{{ route('review.index') }}"  class="dropdown-item">Show Review</a>
                             
                         </div>
                     </div>
@@ -108,17 +114,9 @@
 
                     
                     
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
                     
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
-                        </div>
-                    </div>
+                    
+                    
                 </div>
             </nav>
         </div>

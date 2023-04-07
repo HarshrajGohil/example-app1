@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Subcategory;
+use App\Models\Category;
 
 class SubcategoryController extends Controller
 {
@@ -33,6 +34,8 @@ class SubcategoryController extends Controller
     public function create()
     {
         //
+        $data = Category::get();
+        return view('admin.addsubcategory',['cat'=>$data]);
     }
 
     /**
@@ -44,6 +47,19 @@ class SubcategoryController extends Controller
     public function store(Request $request)
     {
         //
+        echo "in store ";
+
+        $subcat = new Subcategory;
+ 
+        $subcat->sub_cate_name = $request->sub_cate_name; 
+        $subcat->sub_cate_desc = $request->sub_cate_desc; 
+        $subcat->cat_id = $request->cate_name;  
+        $subcat->save();
+        return redirect('/subcategory');
+
+
+ 
+        $flight->save();
     }
 
     /**

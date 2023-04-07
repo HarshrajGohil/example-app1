@@ -6,7 +6,12 @@ use App\Http\Controllers\CategoryController;
 
 use App\Http\Controllers\SubcategoryController;
 
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductController; 
+
+use App\Http\Controllers\ReviewController;
+
+use App\Http\Controllers\UserController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,29 +38,34 @@ Route::get('/dashboard', function () {
     return view('admin.dashboard');
 });
 
-    Route::get('/addcategory', function () {
-        return view('admin.addcategory');
-});
+//    Route::get('/addcategory', function () {
+//        return view('admin.addcategory');
+//});
 
 Route::get('/form', function () {
     return view('admin.form');
 });
 
-Route::get('/addsubcategory', function () {
-    return view('admin.addsubcategory');
-});
+//Route::get('/addsubcategory', function () {
+//    return view('admin.addsubcategory');
+//});
 
-Route::get('/addproduct', function () {
-    return view('admin.addproduct');
-});
+//Route::get('/addproduct', function () {
+//    return view('admin.addproduct');
+//});
 
-Route::get('/addreview', function () {
-    return view('admin.addreview');
-}); 
+//Route::get('/addreview', function () {
+//    return view('admin.addreview');
+//}); 
 
 // Route::get('/showcategory', function () {
 //     return view('admin.showcategory');
 // });
+
+Route::resources([
+    'user1' => UserController::class,
+    
+]);
 
 
 Route::resources([
@@ -86,9 +96,13 @@ Route::resources([
 //    return view('admin.showproduct');
 //});
 
-Route::get('/showreview', function () {
-    return view('admin.showreview');
-});
+Route::resources([
+    'review' => ReviewController::class,
+    
+]);
+//Route::get('/showreview', function () {
+//    return view('admin.showreview');
+//});
 
 Route::get('/adminlogin', function () {
     return view('admin.adminlogin');

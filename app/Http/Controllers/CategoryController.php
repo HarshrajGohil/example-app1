@@ -32,6 +32,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        return view('admin.addcategory');
     }
 
     /**
@@ -42,6 +43,22 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+
+        echo "in store ";
+
+        $cat = new Category;
+ 
+        $cat->cate_name = $request->cate_name; 
+        $cat->cate_desc = $request->cate_desc; 
+        $cat->cate_image = $request->cate_image;
+        $cat->save();
+        return redirect('/category');
+
+
+ 
+        $flight->save();
+
+
         //
     }
 
