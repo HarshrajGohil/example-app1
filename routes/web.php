@@ -12,6 +12,8 @@ use App\Http\Controllers\ReviewController;
 
 use App\Http\Controllers\UserController;
 
+use App\Http\Controllers\ShowProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -136,6 +138,16 @@ Route::get('/register', function () {
 Route::get('/usercart', function () {
     return view('user.usercart');
 });
+
+//Route::get('/showproduct', function () {
+//    return view('user.showproduct');
+//});
+
+Route::resources([
+    'showproduct' => ShowProductController::class,
+    
+]);
+
 
 
 
