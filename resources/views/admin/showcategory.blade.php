@@ -53,7 +53,17 @@
                         </a>
                         
                         <a><i class="fas fa-edit text-primary"></i></a>
-                                                <a> <i class="fas fa-trash text-danger"></i></a>
+
+
+                                          <form action="{{ route('category.destroy',$value['id']) }}" method="POST">
+   
+                
+                    @csrf
+                    @method('DELETE')
+      
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+
 
                         </td>
                     </tr>

@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product; 
 use App\Models\Subcategory;
-
+use Session;
+use DB;
 
 class ProductController extends Controller
 {
@@ -17,7 +18,7 @@ class ProductController extends Controller
     public function index()
     {
         //
-        $data = Product::
+        $data = Product::select('*','subcategory.id as cid','product.id as sid')->
         join('subcategory', 'subcategory.id', '=', 'product.cat_id')->
         paginate(2);
 
@@ -73,6 +74,39 @@ class ProductController extends Controller
     public function show($id)
     {
         //
+
+        echo $id;
+    
+
+        $data = Product::where('product.id',$id)->
+        join('subcategory', 'subcategory.id', '=', 'product.cat_id')->get();
+
+
+        $allImg = DB::table('images')->where('pro_id',$id)->get();
+
+        // $allPro = DB::table('product')->where('pro_image',$id)->get();
+
+      
+
+        // echo "<pre>";
+        
+        // print_r($data); 
+
+         return view('user.singleproduct',['data'=>$data,'allImg'=>$allImg]);
+
+
+
+
+
+
+
+
+        // print_r($data);
+    
+
+        // code here specific id dta 
+
+
     }
 
     /**
@@ -107,5 +141,10 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+        Product::destroy($id);
+
+        Session::flash('message', 'Delete successfully!');
+        Session::flash('alert-class', 'alert-success');
+        return redirect('product');
     }
 }

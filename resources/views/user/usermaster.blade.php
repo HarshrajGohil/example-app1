@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+     
  
     <link rel="stylesheet" href="user/css/animate.css">
     
@@ -16,11 +17,15 @@
     <link rel="stylesheet" href="user/css/magnific-popup.css">
 
 
-    <link rel="stylesheet" href="user/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="user/css/jquery.timepicker.css">
+    {{--<link rel="stylesheet" href="user/css/bootstrap-datepicker.css"> --}}
+    <link rel="stylesheet" href="{{ URL::asset('user/css/bootstrap-datepicker.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('user/css/bootstrap-datepicker.css') }}">
+
+    <link rel="stylesheet" href="{{ URL::asset('user/css/user/css/jquery.timepicker.css')}}">
 
     <link rel="stylesheet" href="user/css/flaticon.css">
-    <link rel="stylesheet" href="user/css/style.css">
+   
+    <link rel="stylesheet" href="{{ URL::asset ("user/css/style.css")}}">
    
 
   </head>
@@ -58,12 +63,37 @@
 	        <ul class="navbar-nav ml-auto">
 	        	<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
 	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	        	<li class="nav-item"><a href="vet.html" class="nav-link">Veterinarian</a></li>
+	        	
 	        	<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-	          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
-	          <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
 	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+           
+
+    @if(!empty(Session::get('userName')))  
+
+            <li class="nav-item"><a href="cart" class="nav-link">Cart</a></li> 
+
+     <li class="nav-item"><a href="cart" class="nav-link">Hello 
+                {{ Session::get('userName') }}
+
+            </a></li>   
+
+
+        <li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>  
+
+      @endif
+
+ @if(empty(Session::get('userName')))  
+
+
+     
+
+
+        <li class="nav-item"><a href="login" class="nav-link">Login</a></li>  
+
+      @endif
+
+          
+
 	        </ul>
 	      </div>
 	    </div>

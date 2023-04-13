@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Subcategory;
 use App\Models\Category;
+use Session;
 
 class SubcategoryController extends Controller
 {
@@ -17,7 +18,7 @@ class SubcategoryController extends Controller
     {
         //
         
-        $data = Subcategory::
+        $data = Subcategory::select('*','category.id as cid','subcategory.id as sid')->
         join('category', 'category.id', '=', 'subcategory.cat_id')->
         paginate(2);
 
@@ -105,5 +106,10 @@ class SubcategoryController extends Controller
     public function destroy($id)
     {
         //
+        Subcategory::destroy($id);
+
+        Session::flash('message', 'Delete successfully!');
+        Session::flash('alert-class', 'alert-success');
+        return redirect('subcategory');
     }
 }

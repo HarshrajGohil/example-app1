@@ -14,6 +14,8 @@ use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\ShowProductController;
 
+use App\Http\Controllers\CartController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -147,6 +149,34 @@ Route::resources([
     'showproduct' => ShowProductController::class,
     
 ]);
+
+
+Route::resources([
+    'cart' => CartController::class,
+    
+]);
+
+Route::get('/adminprofile', function () {
+    return view('admin.adminprofile');
+});
+
+
+
+Route::any('/singleproduct/{id}', [ProductController::class, 'show']);
+
+Route::any('/checklogin', [UserController::class, 'checklogin']);
+
+
+
+Route::any('/checkadminlogin', [UserController::class, 'adminlogin']);
+
+
+Route::any('/logout', [UserController::class, 'logout']);
+
+Route::any('/adminlogout', [UserController::class, 'adminlogout']);
+
+Route::any('/myprofile', [UserController::class, 'adminprofile']);
+
 
 
 

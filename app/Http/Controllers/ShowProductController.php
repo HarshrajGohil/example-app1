@@ -15,8 +15,9 @@ class ShowProductController extends Controller
     public function index()
     {
         //
-        $data = ShowProduct::join('subcategory', 'subcategory.id', '=', 'product.cat_id')->
-        paginate(2);
+        $data = ShowProduct::select('*','product.id as pid')->
+        join('subcategory', 'subcategory.id', '=', 'product.cat_id')->
+        paginate(4);
        
 
         

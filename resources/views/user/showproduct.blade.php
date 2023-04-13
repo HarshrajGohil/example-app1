@@ -79,8 +79,12 @@
               <p>{{$value['pro_name']}}</p>    
               <p>&#x20B9;{{$value['pro_price']}}</p>
     
-               <span class="fa fa-shopping-cart btn btn-primary"></span>  
-               <span class="fa fa-eye btn btn-primary"></span> 
+               <a  class="fa fa-shopping-cart btn btn-primary text-white">
+			   
+			   </a>
+			     <a href='singleproduct/{{$value['pid'] }}' class="fa fa-eye btn btn-primary">
+               
+			   </a>
               
               </div>
               

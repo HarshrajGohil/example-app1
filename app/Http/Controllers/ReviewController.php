@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Review;
 use App\Models\Product;
 use App\Models\User;
+use Session;
 
 class ReviewController extends Controller
 {
@@ -17,7 +18,7 @@ class ReviewController extends Controller
     public function index()
     {
         //
-        $data = Review::
+        $data = Review::select('*','user.id as uid','product.id as pid','review.id as rid')->
         join('user', 'user.id', '=', 'review.user_id')-> 
         join('product', 'product.id', '=', 'review.product_id')->
 
@@ -110,5 +111,10 @@ class ReviewController extends Controller
     public function destroy($id)
     {
         //
+        Review::destroy($id);
+
+        Session::flash('message', 'Delete successfully!');
+        Session::flash('alert-class', 'alert-success');
+        return redirect('review');
     }
 }

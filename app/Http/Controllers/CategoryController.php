@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
+use Session;
 
 class CategoryController extends Controller
 {
@@ -104,6 +105,16 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // 
+
+        echo $id;
+
+        Category::destroy($id);
+
+        Session::flash('message', 'Delete successfully!');
+        Session::flash('alert-class', 'alert-success');
+        return redirect('category');
+
+
     }
 }

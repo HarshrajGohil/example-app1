@@ -47,7 +47,15 @@
                         </a>
                         
                         <a><i class="fas fa-edit text-primary"></i></a>
-                                                <a> <i class="fas fa-trash text-danger"></i></a>
+                        <form action="{{ route('review.destroy',$value['rid']) }}" method="POST">
+   
+                
+                    @csrf
+                    @method('DELETE')
+                    <a class="" href="">
+                    <i class="fas fa-trash"></i></a>
+                </form>
+                                               
 
                         </td>
                     </tr>
