@@ -107,6 +107,8 @@
 
         }
 
+        
+
         </style>
  <div class="container my-5">
         <div class="row">
@@ -183,8 +185,137 @@
             </div>
         </div>
     </div>
+<div class="mx-0 mx-sm-auto">
+  <div class="card">
+    <div class="card-header bg-primary">
+      <h5 class="card-title text-white mt-2" id="exampleModalLabel">Feedback request</h5>
+    </div>
+    <div class="modal-body">
+      <div class="text-center">
+        <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
+        <p>
+          <strong>Your opinion matters</strong>
+        </p>
+        <p>
+          Have some ideas how to improve our product?
+          <strong>Give us your feedback.</strong>
+        </p>
+      </div>
+
+      <hr />
+
+      <form class="px-4" action="{{ route('review.store') }}" method="post">
+
+      @csrf
+        <p class="text-center"><strong>Your Rating:</strong></p>
+
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="rev_stars" id="radio3Example1" value='5' />
+          <label class="form-check-label" for="radio3Example1" >
+            Very good
+          </label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="rev_stars" id="radio3Example2" value='4' />
+          <label class="form-check-label" for="radio3Example2">
+            Good
+          </label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="rev_stars" id="radio3Example3" value='3' />
+          <label class="form-check-label" for="radio3Example3">
+            Medicore
+          </label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="rev_stars" id="radio3Example4" value='2'/>
+          <label class="form-check-label" for="radio3Example4">
+            Bad
+          </label>
+        </div>
+        <div class="form-check mb-2">
+          <input class="form-check-input" type="radio" name="rev_stars" id="radio3Example5" value='1'/>
+          <label class="form-check-label" for="radio3Example5">
+            Very bad
+          </label>
+        </div>
+
+        <input type='hidden' value={{Session::get('uid')}} name='user_name'/> 
 
 
+                <input type='hidden' value={{$data[0]['id']}} name='pro_name'/> 
+
+
+
+        <p class="text-center"><strong>Review Text</strong></p>
+
+        <!-- Message input -->
+        <div class="form-outline mb-4">
+          <textarea class="form-control" id="form4Example3" rows="4" name='review_desc'></textarea>
+          <label class="form-label" for="form4Example3">Your Review</label>
+        </div> 
+
+         <div class="text-center">
+      <input type="submit" class="btn btn-primary" >
+    </div>
+
+      </form>
+    </div>
+   
+  </div>
+</div>
+
+
+
+<section style="color: #000; background-color: #f3f2f2;">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center">
+      <div class="col-md-10 col-xl-8 text-center">
+        <h3 class="fw-bold mb-4">Feedback</h3>
+       
+      </div>
+    </div>
+
+    <div class="row text-center">
+    @foreach($allReview as $value)
+          <div class="col-md-4 mb-4 mb-md-0">
+        <div class="card">
+          <div class="card-body py-4 mt-2">
+            <div class="d-flex justify-content-center mb-4">
+              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
+                class="rounded-circle shadow-1-strong" width="100" height="100" />
+            </div>
+            <h5 class="font-weight-bold"></h5>
+            <h6 class="font-weight-bold my-3">Founder at ET Company</h6>
+            <ul class="list-unstyled d-flex justify-content-center">
+              <li>
+                <i class="fas fa-star fa-sm text-info"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-info"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-info"></i>
+              </li>
+              <li>
+                <i class="fas fa-star fa-sm text-info"></i>
+              </li>
+              <li>
+                <i class="fas fa-star-half-alt fa-sm text-info"></i>
+              </li>
+            </ul>
+            <p class="mb-2" value={{$data[0]['review_desc']}}>
+              <i class="fas fa-quote-left pe-2"></i>.
+            </p>
+          </div>
+        </div>
+      </div>
+    @endforeach
+    
+
+    </div>
+  </div>
+</section>
 
    {{-- <div class="container similar-products my-4">
         <hr>

@@ -65,6 +65,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        
         //
         // $data = User::where('user.id',$id)->get();
     }
@@ -106,6 +107,15 @@ class UserController extends Controller
         return  redirect('/adminlogin');
     }
 
+
+    public function adminprofile(Request $request)
+    {
+        $adminid = $request->session()->get('aid'); 
+        $userdata = User::where('id',$adminid)->get();
+
+                     return  view('admin.adminprofile',['userdata'=>$userdata]);
+
+    }
     public function adminlogin(Request $request)
     {
 
@@ -130,26 +140,9 @@ class UserController extends Controller
 
         else 
         {
-            return  redirect('/adminlogin');
+            return  redirect('/adminlogin')->with("error","Check Id And Password");
 
         }
-
-        
-
-
-       echo "hello...";
-    }
-
-    public function myprofile()
-    {
-
-        $data = User;
-
-        return view('admin.adminprofile',['adminprofile'=>$data]);
-       
-    
-    
-
 
         
 
@@ -189,7 +182,24 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+       
+
+
+
+        $user = User::find($id);
+ 
+        $user->first_name = $request->first_name;
+        $request->session()->put('userName', $user->first_name);  
+
+        $user->last_name = $request->last_name;
+        $user->contact_no = $request->contact_no;
+        $user->address = $request->address;
+
+         
+        $user->save();
+    
+    
+        return back()->with('success','User Profile Updated... if you change  first name , your admin panel will reflect after login');
     }
 
     /**
@@ -205,6 +215,6 @@ class UserController extends Controller
 
         Session::flash('message', 'Delete successfully!');
         Session::flash('alert-class', 'alert-success');
-        return redirect('user1');
+        return redirect('user1')->with('delete','User Deleted..');; 
     }
 }

@@ -60,12 +60,25 @@
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                     <div class="ms-3">
-                        <h6 class="mb-0">Jhon Doe</h6>
+                        
+                            <span class="d-none d-lg-inline-flex">Hello 
+                                                   {{ Session::get('adminname') }}
+
+                            </span> 
                         <span>Admin</span>
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
                     <a href="dashboard" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+
+                       <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="fas fa-user"></i>
+                        User</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="{{ route('user1.index') }}" class="dropdown-item">Show User</a>
+                        </div>
+                    </div>
                   
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -76,18 +89,6 @@
                             <a href="{{ route('category.index') }}" class="dropdown-item">Show Category</a>
                         </div>
                     </div> 
-
-
-                      <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        <i class="fas fa-user"></i>
-                        User</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="{{ route('user1.index') }}" class="dropdown-item">Show User</a>
-                        </div>
-                    </div>
-
-
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
@@ -119,6 +120,17 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{ route('review.create') }}"  class="dropdown-item">Add Review</a>
                             <a href="{{ route('review.index') }}"  class="dropdown-item">Show Review</a>
+                            
+                        </div>
+                    </div>
+
+                     <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="fas fa-syringe"></i>
+                        Doctor</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="{{ route('doctor.create') }}"  class="dropdown-item">Add Doctor</a>
+                            <a href="{{ route('doctor.index') }}"  class="dropdown-item">Show Doctor</a>
                             
                         </div>
                     </div>
@@ -182,13 +194,13 @@
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
                         <div class="col-12 col-sm-6 text-center text-sm-start">
-                            &copy; <a href="#">Your Site Name</a>, All Right Reserved. 
+                            &copy; <a href="">Doggy Den</a>, All Right Reserved. 
                         </div>
                         <div class="col-12 col-sm-6 text-center text-sm-end">
                             <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                            Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                            Designed By <a href="">Doggy Den</a>
                         </br>
-                        Distributed By <a class="border-bottom" href="https://themewagon.com" target="_blank">ThemeWagon</a>
+                        
                         </div>
                     </div>
                 </div>

@@ -3,29 +3,38 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Subcategory;
-use App\Models\Category;
+use App\Models\Doctor;
 use Session;
 
-class SubcategoryController extends Controller
+class DoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        $data = Doctor::paginate(2);
         
-        $data = Subcategory::select('*','category.id as cid','subcategory.id as sid')->
-        join('category', 'category.id', '=', 'subcategory.cat_id')->
-        paginate(5);
 
+        return view('admin.showdoctor',['doctor'=>$data]);
         
-        return view('admin.showsubcategory',['subcat'=>$data]);
+
+      
+
+    } 
+
+    public function showdr()
+    {
+
+        $data = Doctor::where('is_approve',1)->paginate(2); 
+        return view('user.showdoctor',['doctor'=>$data]);
+
 
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,8 +44,9 @@ class SubcategoryController extends Controller
     public function create()
     {
         //
-        $data = Category::get();
-        return view('admin.addsubcategory',['cat'=>$data]);
+        return view('admin.adddoctor');
+
+        return view('user.doctorregister');
     }
 
     /**
@@ -47,20 +57,19 @@ class SubcategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        echo "in store ";
+        
+        $doc = new Doctor;
+        $doc->full_name = $request->full_name; 
+        $doc->degree = $request->degree; 
+        $doc->specialist = $request->specialist;
+        $doc->about = $request->about; 
+        $doc->location = $request->location; 
+        $doc->email = $request->email; 
+        $doc->photo = $request->photo; 
+        $doc->contact_no = $request->contact_no; 
+        $doc->save();
+        return back()->with("doctore created")->with('insert','Doctor Inserted..');; 
 
-        $subcat = new Subcategory;
- 
-        $subcat->sub_cate_name = $request->sub_cate_name; 
-        $subcat->sub_cate_desc = $request->sub_cate_desc; 
-        $subcat->cat_id = $request->cate_name;  
-        $subcat->save();
-        return redirect('/subcategory')->with('success','Subcategory inserted..');; 
-
-
- 
-        $flight->save();
     }
 
     /**
@@ -72,7 +81,17 @@ class SubcategoryController extends Controller
     public function show($id)
     {
         //
-       
+//   echo $id; 
+//         $doctor = Doctor::find($id);
+//         echo($doctor->full_name);
+//         echo($doctor->degree);
+//         echo($doctor->specialist);
+//         echo($doctor->about);
+//         echo($doctor->location);
+//         echo($doctor->email);
+//         echo($doctor->photo);
+//         echo($doctor->contact_no);
+//         return view('user.showdoctor',['doctor'=>$doctor]); 
     }
 
     /**
@@ -84,13 +103,6 @@ class SubcategoryController extends Controller
     public function edit($id)
     {
         //
-
-        $subcat = Subcategory::find($id); 
-
-        $allcat = Category::get();
-        return view('admin.updatesubcategory',['subcat'=>$subcat,'allcat'=>$allcat]);
-
-       
     }
 
     /**
@@ -103,18 +115,6 @@ class SubcategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $subcategory = Subcategory::find($id);
- 
-        $subcategory->sub_cate_name = $request->sub_cate_name;
-
-        $subcategory->sub_cate_desc = $request->sub_cate_desc;
-       // $subcategory->cat_id = $request->cat_id;
-
-         
-        $subcategory->save();
-    
-    
-        return back()->with('success','Subcategory Updated..');
     }
 
     /**
@@ -126,10 +126,10 @@ class SubcategoryController extends Controller
     public function destroy($id)
     {
         //
-        Subcategory::destroy($id);
+        Doctor::destroy($id);
 
         Session::flash('message', 'Delete successfully!');
         Session::flash('alert-class', 'alert-success');
-        return redirect('subcategory')->with('delete','Subcategory deleted..');;
+        return redirect('doctor')->with('delete','Doctor Deleted..');; 
     }
 }

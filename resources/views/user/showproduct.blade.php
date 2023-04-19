@@ -89,9 +89,11 @@
               </div>
               
               @endforeach
+			    <br><div class="d-flex justify-content-center">
+
                {{ $prod->links() }}
               </div> 
-              
+             
 
 
 

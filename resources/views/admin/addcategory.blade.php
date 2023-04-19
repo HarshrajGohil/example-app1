@@ -2,6 +2,7 @@
 @extends('admin.master')
 @section('content')
 
+
 <div class="container-fluid pt-4 px-4" class="center">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-12">
@@ -30,8 +31,7 @@
                             </form>
                         </div>
                     </div>
-</body>
-</html>
+
 {{-- <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-6 col-xl-3">

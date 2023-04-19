@@ -1,5 +1,10 @@
 @extends('admin.master')
 @section('content')
+ @if ($message = Session::get('delete'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
 <div class="container-fluid pt-4 px-4">
     
 </div>
@@ -59,7 +64,7 @@
                     @csrf
                     @method('DELETE')
       
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="fas fa-trash text-primary"></button>
                 </form>
                                              
 

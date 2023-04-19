@@ -20,7 +20,7 @@ class ProductController extends Controller
         //
         $data = Product::select('*','subcategory.id as cid','product.id as sid')->
         join('subcategory', 'subcategory.id', '=', 'product.cat_id')->
-        paginate(2);
+        paginate(5);
 
         return view('admin.showproduct',['prod'=>$data]);
     }
@@ -58,7 +58,7 @@ class ProductController extends Controller
         $prod->cat_id = $request->subcat_name; 
 
         $prod->save();
-        return redirect('/product');
+        return redirect('/product')->with('success','Product inserted..');; 
 
 
  
@@ -84,6 +84,9 @@ class ProductController extends Controller
 
         $allImg = DB::table('images')->where('pro_id',$id)->get();
 
+
+        $allReview = DB::table('review')->where('product_id',$id)->get();
+
         // $allPro = DB::table('product')->where('pro_image',$id)->get();
 
       
@@ -92,7 +95,10 @@ class ProductController extends Controller
         
         // print_r($data); 
 
-         return view('user.singleproduct',['data'=>$data,'allImg'=>$allImg]);
+         return view('user.singleproduct',['data'=>$data,'allImg'=>$allImg,'allReview'=>$allReview]);
+
+
+
 
 
 
@@ -117,7 +123,18 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+        // 
+
+        
+         $prod = Product::find($id);
+         $allprod = Subcategory::get();
+         return view('admin.updateproduct',['prod'=>$prod,'allprod'=>$allprod]);
+    }
+    public function show1($id)
+    {
         //
+        
+        
     }
 
     /**
@@ -130,6 +147,19 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //
+         $prod = Product::find($id);
+         $prod->pro_name = $request->pro_name;
+         $prod->pro_desc = $request->pro_desc;
+         $prod->pro_image = $request->pro_image;
+         $prod->pro_price = $request->pro_price;
+         $prod->pro_quantity = $request->pro_quan;
+         $prod->pro_measurement = $request->pro_meas;
+    
+ 
+          
+         $prod->save();
+     
+         return redirect('product')->with('update','Product updated..');;
     }
 
     /**
@@ -145,6 +175,6 @@ class ProductController extends Controller
 
         Session::flash('message', 'Delete successfully!');
         Session::flash('alert-class', 'alert-success');
-        return redirect('product');
+        return redirect('product')->with('delete','Product deleted..');;
     }
 }

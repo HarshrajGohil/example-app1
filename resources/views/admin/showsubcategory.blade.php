@@ -1,5 +1,17 @@
 @extends('admin.master')
 @section('content')
+ @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+
+
+    @if ($message = Session::get('delete'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
 <div class="container-fluid pt-4 px-4">
     
 </div>
@@ -14,13 +26,13 @@
     <div class="bg-light text-center rounded p-4">
         <div class="d-flex align-items-center justify-content-between mb-4">
             <h6 class="mb-0">Show SubCategory</h6>
-            <a href="">Show All</a>
+            
         </div>
         <div class="table-responsive">
             <table class="table text-start align-middle table-bordered table-hover mb-0">
                 <thead>
                     <tr class="text-dark">
-                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                    {{--    <th scope="col"><input class="form-check-input" type="checkbox"></th>  --}}
                         <th scope="col">SubCategory Name</th>
                         <th scope="col">SubCatgeory Description</th>
                         <th scope="col">Category Name </th>
@@ -32,26 +44,32 @@
                 @foreach($subcat as $value)
                  
                     <tr>
-                        <td><input class="form-check-input" type="checkbox"></td>
+                       
                         <td>{{ $value['sub_cate_name']}}</td>
                         <td>{{ $value['sub_cate_desc']}}</td>
                         <td>{{ $value['cate_name']}}</td>
                         
                         <td><a class="" href="">
                                 
-                               <i class="fas fa-eye"></i>
+                         {{--      <i class="fas fa-eye"></i> --}}
                               
                                
                         </a>
                         
-                        <a><i class="fas fa-edit text-primary"></i></a>
+                        <a class="" href="{{ route('subcategory.edit',$value['sid']) }}">
+                        <i class="fas fa-edit text-primary"></i></a>
+                       
+                         
                         <form action="{{ route('subcategory.destroy',$value['sid']) }}" method="POST">
+                        
+                         <button type="submit" class="fas fa-trash text-primary" onclick='return confirm("r u sure u want to delete this data ?")'></button>
+                       
    
                 
                     @csrf
                     @method('DELETE')
       
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    
                 </form>
                                                
 

@@ -16,6 +16,8 @@ use App\Http\Controllers\ShowProductController;
 
 use App\Http\Controllers\CartController;
 
+use App\Http\Controllers\DoctorController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -156,9 +158,7 @@ Route::resources([
     
 ]);
 
-Route::get('/adminprofile', function () {
-    return view('admin.adminprofile');
-});
+
 
 
 
@@ -176,6 +176,31 @@ Route::any('/logout', [UserController::class, 'logout']);
 Route::any('/adminlogout', [UserController::class, 'adminlogout']);
 
 Route::any('/myprofile', [UserController::class, 'adminprofile']);
+
+// Route::any('/updatecategory', [CategoryController::class, 'updatecategory']);
+
+// Route::get('/adminprofile', function () {
+//     return view('admin.adminprofile');
+// });
+
+Route::resources([
+    'doctor' => DoctorController::class,
+    
+]);
+
+Route::get('/doctorregister', function () {
+    return view('user.doctorregister');
+});
+
+
+
+
+
+Route::any('/showdoctor', [DoctorController::class, 'showdr']);
+
+
+
+
 
 
 

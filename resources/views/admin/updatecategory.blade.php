@@ -1,51 +1,46 @@
 
 @extends('admin.master')
 @section('content')
+   @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
 
 <div class="container-fluid pt-4 px-4" class="center">
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
-                            
-                            <form method="post" action = {{ route('review.store') }}>
-                              @csrf
+
+                            <form method="post" action="{{ route('category.update',$cat->id )}}">
+                             @csrf
+                                    @method('PUT')
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Review Description</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" 
-                                    aria-describedby="name" name="review_desc">
+                                    <label for="exampleInputEmail1" class="form-label">Category Name</label>
+                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                        aria-describedby="name" name="cate_name" value = "{{$cat->cate_name}}">
                                     
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Review Stars</label>
-                                    <input type="number" class="form-control" id="exampleInputPassword1" 
-                                    name="rev_stars">
+                                    <label for="exampleInputPassword1" class="form-label">Catgegory Description</label>
+                                   <textarea cols='100' rows='5' name='cate_desc'>
+                              {{$cat->cate_desc}}
+                              </textarea>
                                 </div>
+                                
 
                                     <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">User Name </label>
-                                    <select class="form-select" aria-label="Default select example" 
-                                    name="user_name">
-                                     @foreach($user as  $u)
-                                     <option value={{$u['id']}}>{{$u['first_name']}} {{$u['last_name']}}</option>
-                                     @endforeach
-                                </select>
-                                </div>
-                                    <div class="mb-3">
-                                    <label for="exampleInputPassword1" class="form-label">Product Name </label>
-                                    <select class="form-select" aria-label="Default select example" name="pro_name">
-                                     @foreach($pro as  $p)
-                                     <option value={{$p['id']}}>{{$p['pro_name']}}</option>
-                                     @endforeach
-                                </select>
-                                    
+                                    <label for="exampleInputPassword1" class="form-label">Catgeory Image</label>
+                                    <img src="../{{$cat->cate_image}}" height='100' width='100'/>
+                                    <input type="file" class="form-control" id="exampleInputPassword1" 
+                                    name="cate_image">
                                 </div>
                                
-                               <center> <button type="submit" class="btn btn-primary" name="submit">Add Review</button></center>
+                               <center> <button type="submit" class="btn btn-primary" name="submit">Update Category</button></center>
                             </form>
                         </div>
                     </div>
-</body>
-</html>
+
 {{-- <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-6 col-xl-3">

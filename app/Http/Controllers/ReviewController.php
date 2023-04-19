@@ -52,20 +52,21 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         //
-        $rev = new Product;
+         $rev = new Review;
+     
+        
  
-        $rev->rev_desc = $request->rev_desc; 
-        $rev->rev_stars = $request->rev_stars; 
-        $rev->user_name = $request->user_name;
-        $rev->pro_name = $request->pro_name; 
+        $rev->review_desc = $request->review_desc; 
+        $rev->review_stars = $request->rev_stars; 
+        $rev->user_id = $request->user_name;
+        $rev->product_id = $request->pro_name; 
     
 
         $rev->save();
-        return redirect('/review');
+        return back()->with('success','Review inserted..');;
 
 
  
-        $flight->save();
     }
 
     /**
@@ -77,6 +78,7 @@ class ReviewController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
@@ -115,6 +117,6 @@ class ReviewController extends Controller
 
         Session::flash('message', 'Delete successfully!');
         Session::flash('alert-class', 'alert-success');
-        return redirect('review');
+        return redirect('review')->with('delete','Review Deleted..');;
     }
 }

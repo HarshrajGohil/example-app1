@@ -53,7 +53,13 @@ class CategoryController extends Controller
         $cat->cate_desc = $request->cate_desc; 
         $cat->cate_image = $request->cate_image;
         $cat->save();
-        return redirect('/category');
+        return redirect('/category')->with('success','Category inserted..');; 
+        
+
+
+        
+
+        
 
 
  
@@ -61,6 +67,17 @@ class CategoryController extends Controller
 
 
         //
+    }
+
+    public function updatecategory(Request $request)
+    {
+        $adminid = $request->session()->get('aid'); 
+        $userdata = Category::where('id',$adminid)->get();
+
+                     return  view('admin.updatecategory',['userdata'=>$userdata]);;
+
+                     
+
     }
 
     /**
@@ -71,6 +88,13 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
+
+         echo $id; 
+         $cat = Category::find($id);
+         echo($cat->cate_name);
+         return view('admin.updatecategory',['cat'=>$cat]);
+          
+
         //
     }
 
@@ -84,6 +108,14 @@ class CategoryController extends Controller
     {
         //
     }
+    // public function updatecategory(Request $request)
+    // {
+    //     $adminid = $request->session()->get('aid'); 
+    //     $userdata = User::where('id',$adminid)->get();
+
+    //                  return  view('admin.updateprofile',['userdata'=>$userdata]);
+
+    // }
 
     /**
      * Update the specified resource in storage.
@@ -95,6 +127,19 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        
+        $category = Category::find($id);
+ 
+        $category->cate_name = $request->cate_name;
+
+        $category->cate_desc = $request->cate_desc;
+        $category->cate_image = $request->cate_image;
+
+         
+        $category->save();
+    
+    
+        return back()->with('success','Category Updated..');
     }
 
     /**
@@ -107,13 +152,13 @@ class CategoryController extends Controller
     {
         // 
 
-        echo $id;
+     //   echo $id;
 
         Category::destroy($id);
 
         Session::flash('message', 'Delete successfully!');
         Session::flash('alert-class', 'alert-success');
-        return redirect('category');
+        return redirect('category')->with('delete','Category deleted..');;
 
 
     }
