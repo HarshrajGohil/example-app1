@@ -56,7 +56,7 @@
                        
                         <td>{{ $value['pro_name']}}</td>
                         <td>{{ $value['pro_desc']}}</td>
-                        <td>{{ $value['pro_image']}}</td>
+                        <td><img src={{ $value['pro_image']}} height='150' width='150'></td>
                         <td>{{ $value['pro_price']}}</td>
                         <td>{{ $value['pro_quantity']}}</td>
                         <td>{{ $value['pro_measurement']}}</td>

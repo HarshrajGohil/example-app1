@@ -1,72 +1,53 @@
 @extends('user.usermaster')
 @section('content')
-<div class="container-fluid pt-4 px-4">
-    
-</div>
-<div class="container-fluid pt-4 px-4">
-    <div class="bg-light text-center rounded p-4">
-        <div class="d-flex align-items-center justify-content-between mb-4">
-            <h6 class="mb-0">Show Doctor</h6>
-           
-        </div>
-        <div class="table-responsive">
-            <table class="table text-start align-middle table-bordered table-hover mb-0">
-                <thead>
-                    <tr class="text-dark">
-                        <th scope="col"><input class="form-check-input" type="checkbox"></th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Degree</th>
-                        <th scope="col">Specialist</th>
-                        <th scope="col">About</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Photo</th>
-
-                       
-                        <th scope="col">Contact Number</th>
-                    </tr>
-                </thead>
-                <tbody>
-                 @foreach($doctor as $value)
-                 
-                    <tr>
-                        <td><input class="form-check-input" type="checkbox"></td>
-                        <td>{{ $value['full_name']}}</td>
-                        <td>{{ $value['degree']}}</td>
-                        <td>{{ $value['specialist']}}</td>
-                         <td>{{ $value['about']}}</td>
-                          <td>{{ $value['location']}}</td>
-                           <td>{{ $value['email']}}</td>
-                            <td>{{ $value['photo']}}</td>
-                             <td>{{ $value['contact_no']}}</td>
-                        <td><a class="" href="">
-                                
-                               <i class="fas fa-eye"></i>
-                              
-                               
-                        </a>
-                        
-                
-        <a class="" href="{{ route('doctor.show',$value['id']) }}"><i class="fas fa-edit text-primary"></i></a>
-   
-                
-                   
-                
-      
-                
-                </form>
-                                             
-
-                        </td>
-                    </tr>
-                     @endforeach
-                </tbody>
-            </table>
-            <div class="d-flex justify-content-center">
-             {{ $doctor->links() }}
+<section style="background-color: #eee;">
+  <div class="container py-5">
+    <div class="row justify-content-center mb-3">
+      <div class="col-md-12 col-xl-10">
+        <div class="card shadow-0 border rounded-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/E-commerce/Products/img%20(4).webp"
+                    class="w-100" />
+                  <a href="#!">
+                    <div class="hover-overlay">
+                      <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              
+              <div class="col-md-6 col-lg-6 col-xl-6">
+              @foreach($doctor as $value)
+              
+                <h5>{{ $value['full_name']}}</h5>
+               
+                <div class="mt-1 mb-0 text-muted small">
+                  <span>{{ $value['degree']}}</span>
+                </div>
+                <div class="mb-2 text-muted small">
+                  <span>{{ $value['specialist']}}</span>
+                  <span class="text-primary"> • </span>
+                </div>
+                <p class="text-truncate mb-4 mb-md-0">{{ $value['about']}}</p>
+                  <p class="text-truncate mb-4 mb-md-0">{{ $value['location']}}</p>
+                    <p class="text-truncate mb-4 mb-md-0">{{ $value['email']}}</p>
+                      <p class="text-truncate mb-4 mb-md-0">{{ $value['contact_no']}}</p>
+              </div>
+            
             </div>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+ 
+    
+  </div>
+   @csrf
+    @endforeach
+</section>
+
 
 @endsection

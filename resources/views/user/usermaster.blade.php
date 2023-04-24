@@ -9,7 +9,8 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
      
- 
+     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="user/css/animate.css">
     
     <link rel="stylesheet" href="user/css/owl.carousel.min.css">
@@ -61,36 +62,39 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item active"><a href="" class="nav-link">Home</a></li>
-	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+	        	<li class="nav-item active"><a href="{{ url('/') }}" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="{{ url('showproduct') }}" class="nav-link">Products</a></li>
+	        	<li class="nav-item"><a href="{{ url('aboutus') }}" class="nav-link">About</a></li>
 	        	
-	        	<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+	          <li class="nav-item"><a href="{{ url('contactus') }}" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="{{ url('login') }}" class="nav-link">Login</a></li>
+              @if(!(Session::get('userName')))  
+            <li class="nav-item"><a href="{{ url('register') }}" class="nav-link">Register</a></li>
+             @endif
+
+            
            
 
     @if(!empty(Session::get('userName')))  
 
             <li class="nav-item"><a href="cart" class="nav-link">Cart</a></li> 
+            <li class="nav-item"><a href="editprofile" class="nav-link">Edit Profile</a></li> 
+               <li class="nav-item"><a href="" class="nav-link">My Order</a></li> 
 
      <li class="nav-item"><a href="cart" class="nav-link">Hello 
                 {{ Session::get('userName') }}
 
             </a></li>   
 
-
-        <li class="nav-item"><a href="logout" class="nav-link">Logout</a></li>  
+        
+        <li class="nav-item"><a href="{{ url('logout') }}" class="nav-link">Logout</a></li>  
 
       @endif
 
- @if(empty(Session::get('userName')))  
 
-
+ 
      
-
-
-        <li class="nav-item"><a href="login" class="nav-link">Login</a></li>  
-
-      @endif
+                        
 
           
 
@@ -121,15 +125,15 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-						<h2 class="footer-heading">Petsitting</h2>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+						<h2 class="footer-heading">About Store </h2>
+						<span class="icon fa fa-envelope"></span> <span class="text">Email : harshh6621@gmail.com</span>
 						<ul class="ftco-footer-social p-0">
               <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
               <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
               <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
             </ul>
 					</div>
-					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
+					{{--<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 						<h2 class="footer-heading">Latest News</h2>
 						<div class="block-21 mb-4 d-flex">
               <a class="img mr-4 rounded" style="background-image: url(img/image_1.jpg);"></a>
@@ -153,34 +157,35 @@
                 </div>
               </div>
             </div>
-					</div>
-					<div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
-						<h2 class="footer-heading">Quick Links</h2>
-						<ul class="list-unstyled">
-              <li><a href="#" class="py-2 d-block">Home</a></li>
-              <li><a href="#" class="py-2 d-block">About</a></li>
-              <li><a href="#" class="py-2 d-block">Services</a></li>
-              <li><a href="#" class="py-2 d-block">Works</a></li>
-              <li><a href="#" class="py-2 d-block">Blog</a></li>
-              <li><a href="#" class="py-2 d-block">Contact</a></li>
-            </ul>
-					</div>
+					</div> --}}
+			
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-						<h2 class="footer-heading">Have a Questions?</h2>
+						<h2 class="footer-heading">Information</h2>
 						<div class="block-23 mb-3">
               <ul>
-                <li><span class="icon fa fa-map"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
+                <li><a href="{{ url('aboutsus') }}"><span class="icon fa fa-map"></span><span class="text">About Us</span></a></li>
+                <li><a href="{{ url('contactus') }}"><span class="icon fa fa-phone"></span><span class="text">Contact Us</span></a></li>
+                <li><a href="#"><span class="icon fa fa-user"></span><span class="text">Edit Profile</span></a></li>
               </ul>
             </div>
+					</div>
+          		<div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
+						<h2 class="footer-heading">Quick Links</h2>
+						<ul class="list-unstyled">
+              <li><a href="{{ url('/') }}" class="py-2 d-block">Home</a></li>
+              <li><a href="{{ url('register') }}" class="py-2 d-block">Register</a></li>
+              <li><a href="{{ url('login') }}" class="py-2 d-block">Login</a></li>
+              <li><a href="#" class="py-2 d-block">My Account</a></li>
+              <li><a href="#" class="py-2 d-block">My Order</a></li>
+                <li><a href="{{ url('aboutus') }}" class="py-2 d-block">About us</a></li>
+            </ul>
 					</div>
 				</div>
 				<div class="row mt-5">
           <div class="col-md-12 text-center">
 
             <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This Website is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="" target="_blank">Doggy Den</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>
         </div>

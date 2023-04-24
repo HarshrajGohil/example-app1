@@ -94,7 +94,7 @@
             font-size: 2rem;
             color: #0093c4;
         }
-
+   
 
         /* Small devices (landscape phones, less than 768px) */
         @media (max-width: 767.98px) {
@@ -185,7 +185,9 @@
             </div>
         </div>
     </div>
-<div class="mx-0 mx-sm-auto">
+    @if(session()->has('uid'))
+
+    <div class="mx-0 mx-sm-auto">
   <div class="card">
     <div class="card-header bg-primary">
       <h5 class="card-title text-white mt-2" id="exampleModalLabel">Feedback request</h5>
@@ -209,9 +211,11 @@
       @csrf
         <p class="text-center"><strong>Your Rating:</strong></p>
 
-        <div class="form-check mb-2">
+        <div class="form-check mb-2">            
           <input class="form-check-input" type="radio" name="rev_stars" id="radio3Example1" value='5' />
           <label class="form-check-label" for="radio3Example1" >
+          
+          
             Very good
           </label>
         </div>
@@ -256,7 +260,7 @@
         </div> 
 
          <div class="text-center">
-      <input type="submit" class="btn btn-primary" >
+      <input type="submit" class="btn btn-primary">
     </div>
 
       </form>
@@ -264,6 +268,9 @@
    
   </div>
 </div>
+      
+  @endif
+
 
 
 
@@ -282,13 +289,14 @@
         <div class="card">
           <div class="card-body py-4 mt-2">
             <div class="d-flex justify-content-center mb-4">
-              <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(10).webp"
+              <img src="../img/user.png"
                 class="rounded-circle shadow-1-strong" width="100" height="100" />
             </div>
             <h5 class="font-weight-bold"></h5>
-            <h6 class="font-weight-bold my-3">Founder at ET Company</h6>
+            <h6 class="font-weight-bold my-3">{{$value->first_name . " ".$value->last_name}}</h6>
             <ul class="list-unstyled d-flex justify-content-center">
-              <li>
+
+              {{-- <li>
                 <i class="fas fa-star fa-sm text-info"></i>
               </li>
               <li>
@@ -299,12 +307,19 @@
               </li>
               <li>
                 <i class="fas fa-star fa-sm text-info"></i>
+              </li> --}}
+
+                 @for($i=1;$i<=$value->review_stars;$i++)
+                  <li>
+                       <i class="fas fa-star" style='color:yellow'></i>
               </li>
-              <li>
-                <i class="fas fa-star-half-alt fa-sm text-info"></i>
-              </li>
+                        @endfor
+                        
+
+
             </ul>
-            <p class="mb-2" value={{$data[0]['review_desc']}}>
+            <p class="mb-2" > 
+             {{$value->review_desc}}
               <i class="fas fa-quote-left pe-2"></i>.
             </p>
           </div>

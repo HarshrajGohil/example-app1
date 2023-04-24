@@ -15,7 +15,7 @@
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
 
-                            <form method="post" action = {{ route('doctor.store') }}>
+                            <form method="post" action = {{ route('doctor.store') }} enctype='multipart/form-data'>
                             @csrf
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Doctor Name</label>
@@ -54,7 +54,8 @@
                                 
                                     <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Doctor Photo</label>
-                                    <input type="file" class="form-control" id="exampleInputPassword1" name="photo">
+                                    <input type="file" class="form-control" id="exampleInputPassword1"
+                                     name="photo">
                                 </div>
 
                                 <div class="mb-3">

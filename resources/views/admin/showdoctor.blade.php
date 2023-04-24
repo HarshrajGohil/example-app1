@@ -55,7 +55,7 @@
                         <td>{{ $value['about']}}</td>
                         <td>{{ $value['location']}}</td>
                         <td>{{ $value['email']}}</td>
-                        <td>{{ $value['photo']}}</td>
+                        <td><img src="{{ $value['photo']}}" height='100' width='100'></td>
                         <td>{{ $value['contact_no']}}</td>
                         
                         <td><a class="" href="">

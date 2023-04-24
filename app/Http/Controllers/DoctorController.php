@@ -57,6 +57,15 @@ class DoctorController extends Controller
      */
     public function store(Request $request)
     {
+
+        
+        $file = $request->file('photo'); 
+        $files = $request->file('images');
+        $destinationPath = 'img';
+
+        $file->move($destinationPath,$file->getClientOriginalName());
+        $path = $destinationPath."/".$file->getClientOriginalName(); 
+
         
         $doc = new Doctor;
         $doc->full_name = $request->full_name; 
@@ -65,9 +74,14 @@ class DoctorController extends Controller
         $doc->about = $request->about; 
         $doc->location = $request->location; 
         $doc->email = $request->email; 
-        $doc->photo = $request->photo; 
+        $doc->photo = $path;
         $doc->contact_no = $request->contact_no; 
         $doc->save();
+
+     
+
+     
+
         return back()->with("doctore created")->with('insert','Doctor Inserted..');; 
 
     }

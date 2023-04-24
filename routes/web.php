@@ -121,8 +121,12 @@ Route::get('/', function () {
     return view('user.userhome');
 });
 
-Route::get('/about', function () {
-    return view('user.about');
+Route::get('/aboutus', function () {
+    return view('user.aboutus');
+});
+
+Route::get('/contactus', function () {
+    return view('user.contactus');
 });
 
 
@@ -176,6 +180,8 @@ Route::any('/logout', [UserController::class, 'logout']);
 Route::any('/adminlogout', [UserController::class, 'adminlogout']);
 
 Route::any('/myprofile', [UserController::class, 'adminprofile']);
+
+Route::any('/editprofile', [UserController::class, 'userprofile']);
 
 // Route::any('/updatecategory', [CategoryController::class, 'updatecategory']);
 

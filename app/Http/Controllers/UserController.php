@@ -116,6 +116,14 @@ class UserController extends Controller
                      return  view('admin.adminprofile',['userdata'=>$userdata]);
 
     }
+    public function userprofile(Request $request)
+    {
+        $adminid = $request->session()->get('uid'); 
+        $userdata = User::where('id',$adminid)->get();
+
+                     return  view('user.userprofile',['userdata'=>$userdata]);
+
+    }
     public function adminlogin(Request $request)
     {
 

@@ -75,7 +75,7 @@
 
 
               <div class='col-sm-3'>
-              <img src={{url($value['pro_image'])}} class='img-fluid'>
+              <img src={{($value['pro_image'])}} class='img-fluid'>
               <p>{{$value['pro_name']}}</p>    
               <p>&#x20B9;{{$value['pro_price']}}</p>
     

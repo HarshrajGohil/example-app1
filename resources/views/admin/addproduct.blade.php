@@ -7,7 +7,7 @@
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
                           
-                            <form method="post" action = {{ route('product.store') }}>
+                            <form method="post" action = {{ route('product.store') }} enctype='multipart/form-data'>
                             @csrf
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Product Name</label>
@@ -53,6 +53,15 @@
 
                                 </select>
                                 </div>
+
+
+                                 <div class="mb-3">
+                                    <label for="exampleInputPassword1" class="form-label">Multiple Image</label>
+                                    <input type="file" class="form-control" id="exampleInputPassword1" 
+                                    name="images[]" multiple>
+                                </div>
+
+
                                
                                <center> <button type="submit" class="btn btn-primary" name="submit">Add Product</button></center>
                             </form>

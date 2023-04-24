@@ -62,7 +62,7 @@
                   <tr>
                         <td>{{ $value['cate_name']}}</td>
                         <td>{{ $value['cate_desc']}}</td>
-                        <td>{{ $value['cate_image']}}</td>
+                        <td><img src={{ $value['cate_image']}} height='100' width='100'></td>
                         
                         <td><a class="" href="">
                                 
