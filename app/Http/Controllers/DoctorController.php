@@ -29,7 +29,7 @@ class DoctorController extends Controller
     public function showdr()
     {
 
-        $data = Doctor::where('is_approve',1)->paginate(2); 
+        $data = Doctor::where('is_approve',1)->paginate(10); 
         return view('user.showdoctor',['doctor'=>$data]);
 
 

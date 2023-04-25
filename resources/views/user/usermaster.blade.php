@@ -37,8 +37,8 @@
 				<div class="row">
 					<div class="col-md-6 d-flex align-items-center">
 						<p class="mb-0 phone pl-md-2">
-							<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +00 1234 567</a> 
-							<a href="#"><span class="fa fa-paper-plane mr-1"></span> youremail@email.com</a>
+							<a href="#" class="mr-2"></a> 
+							<a href="#"><span class="fa fa-paper-plane mr-1"></span>doggyden001@gmail.com</a>
 						</p>
 					</div>
 					<div class="col-md-6 d-flex justify-content-md-end">
@@ -67,10 +67,13 @@
 	        	<li class="nav-item"><a href="{{ url('aboutus') }}" class="nav-link">About</a></li>
 	        	
 	          <li class="nav-item"><a href="{{ url('contactus') }}" class="nav-link">Contact</a></li>
-            <li class="nav-item"><a href="{{ url('login') }}" class="nav-link">Login</a></li>
+            <li class="nav-item"><a href="{{ url('showdoctor') }}" class="nav-link">Doctor</a></li>
               @if(!(Session::get('userName')))  
             <li class="nav-item"><a href="{{ url('register') }}" class="nav-link">Register</a></li>
              @endif
+               @if(!(Session::get('userName')))  
+              <li class="nav-item"><a href="{{ url('login') }}" class="nav-link">Login</a></li>
+               @endif
 
             
            
@@ -126,7 +129,7 @@
 				<div class="row">
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 						<h2 class="footer-heading">About Store </h2>
-						<span class="icon fa fa-envelope"></span> <span class="text">Email : harshh6621@gmail.com</span>
+						<span class="icon fa fa-envelope"></span> <span class="text">Email:doggyden001@gmail.com</span>
 						<ul class="ftco-footer-social p-0">
               <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
               <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
@@ -165,7 +168,7 @@
               <ul>
                 <li><a href="{{ url('aboutsus') }}"><span class="icon fa fa-map"></span><span class="text">About Us</span></a></li>
                 <li><a href="{{ url('contactus') }}"><span class="icon fa fa-phone"></span><span class="text">Contact Us</span></a></li>
-                <li><a href="#"><span class="icon fa fa-user"></span><span class="text">Edit Profile</span></a></li>
+                <li><a href="{{ url('editprofile') }}"><span class="icon fa fa-user"></span><span class="text">Edit Profile</span></a></li>
               </ul>
             </div>
 					</div>
@@ -175,7 +178,7 @@
               <li><a href="{{ url('/') }}" class="py-2 d-block">Home</a></li>
               <li><a href="{{ url('register') }}" class="py-2 d-block">Register</a></li>
               <li><a href="{{ url('login') }}" class="py-2 d-block">Login</a></li>
-              <li><a href="#" class="py-2 d-block">My Account</a></li>
+              <li><a href="{{ url('editprofile') }}" class="py-2 d-block">My Account</a></li>
               <li><a href="#" class="py-2 d-block">My Order</a></li>
                 <li><a href="{{ url('aboutus') }}" class="py-2 d-block">About us</a></li>
             </ul>

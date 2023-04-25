@@ -15,7 +15,10 @@
     <div class="mb-3 form-check">
  
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button></
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <div class="d-flex flex-row-reverse bd-highlight">
+  <a href="userforgotpassword">Forgot Password ?</a>
+  </div>
 </form>
 </div>
 @endsection

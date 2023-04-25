@@ -16,7 +16,9 @@ use App\Http\Controllers\ShowProductController;
 
 use App\Http\Controllers\CartController;
 
-use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\DoctorController; 
+use App\Http\Controllers\EmailController;
+
 
 
 /*
@@ -114,6 +116,14 @@ Route::get('/adminlogin', function () {
     return view('admin.adminlogin');
 });
 
+Route::get('/adminforgotpassword', function () {
+    return view('admin.adminforgotpassword');
+});
+
+Route::get('/userforgotpassword', function () {
+    return view('user.userforgotpassword');
+});
+
 Route::get('/usermaster', function () {return view('user.usermaster');
 });
 
@@ -205,6 +215,7 @@ Route::get('/doctorregister', function () {
 Route::any('/showdoctor', [DoctorController::class, 'showdr']);
 
 
+Route::get('/send-email', [EmailController::class, 'index']);
 
 
 
