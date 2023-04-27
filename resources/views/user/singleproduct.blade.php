@@ -153,7 +153,7 @@
                           
                         </div>
                         <div class="block">
-                            <button class="shadow btn custom-btn">Add to cart</button>
+                            <button class="btn btn-success">Add to cart</button>
                         </div>
 
                         <div class="block quantity">

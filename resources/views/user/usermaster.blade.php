@@ -81,8 +81,8 @@
     @if(!empty(Session::get('userName')))  
 
             <li class="nav-item"><a href="cart" class="nav-link">Cart</a></li> 
-            <li class="nav-item"><a href="editprofile" class="nav-link">Edit Profile</a></li> 
-               <li class="nav-item"><a href="" class="nav-link">My Order</a></li> 
+            <li class="nav-item"><a href="editprofile" class="nav-link">Profile</a></li> 
+               <li class="nav-item"><a href="" class="nav-link">Order</a></li> 
 
      <li class="nav-item"><a href="cart" class="nav-link">Hello 
                 {{ Session::get('userName') }}

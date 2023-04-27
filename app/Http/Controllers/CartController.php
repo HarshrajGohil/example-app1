@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Product; 
 use App\Models\User; 
 use App\Models\Cart;
-
+use DB;
 use Session;
 
 
@@ -23,13 +23,16 @@ class CartController extends Controller
 
         $uid = $request->session()->get('uid');  
 
-        $data = Cart::select('*','product.id as pid')->
+        $data = Cart::select('*','product.id as pid','cart.id as cartId')->
         join('product', 'product.id', '=', 'cart.pro_id')->
         where('user_id','=',$uid)->
         get();
 
-        
-        return view('user.usercart',['cart'=>$data]);
+
+        $total = DB::table('cart')->
+        join('product', 'product.id', '=', 'cart.pro_id')->
+        where('user_id','=',$uid)->sum('pro_price');
+        return view('user.usercart',['cart'=>$data,'total'=>$total]);
     }
 
     /**
@@ -50,8 +53,38 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        // 
+
+        
+        $userid = $request->session()->get('uid'); 
+        $pid = $request->pid;
+
+
+        $checkDb = DB::table('cart')->where('pro_id',$request->pid)->where('user_id',$userid)->get(); 
+        echo "<pre>";
+        if(isset($checkDb[0]->id))
+        {
+            $qnt = $checkDb[0]->quantity + 1; 
+
+            $affected = DB::table('cart')
+              ->where('user_id', $userid)
+              ->where('pro_id',$pid)
+              ->update(['quantity' => $qnt]);
+        }
+        else 
+        {
+            $qnt = 1; 
+            
+        $Cartdata = new Cart();
+        $Cartdata->pro_id = $pid;
+        $Cartdata->user_id = $userid;
+        $Cartdata->quantity = $qnt;
+        $Cartdata->save();
+
+
+          
+        }
+}
 
     /**
      * Display the specified resource.
@@ -61,6 +94,7 @@ class CartController extends Controller
      */
     public function show($id)
     {
+
         //
     }
 
@@ -96,5 +130,60 @@ class CartController extends Controller
     public function destroy($id)
     {
         //
+
+
+         echo $id;
     }
+
+
+    function deletecart($id)
+    {
+        echo "the delete data ".$id;
+        Cart::find($id)->delete();
+        echo "data deleted";
+   }
+   function incresedata($id)
+   {
+          echo $id; 
+
+          $checkDb = DB::table('cart')->where('id',$id)->get(); 
+
+          $qnt = $checkDb[0]->quantity + 1; 
+
+          $affected = DB::table('cart')
+            ->where('id', $id)
+            ->update(['quantity' => $qnt]); 
+
+
+        echo "increse";
+
+
+
+   }
+
+   function decreasedata($id)
+   {
+
+          $checkDb = DB::table('cart')->where('id',$id)->get(); 
+
+          $qnt = $checkDb[0]->quantity - 1; 
+
+          if($qnt <=0)
+          {
+           echo "Min 1 qnt needed";
+          }
+          else 
+          {
+            $affected = DB::table('cart')
+            ->where('id', $id)
+            ->update(['quantity' => $qnt]); 
+
+
+        echo "decrease";
+          }
+
+          
+
+
+   }
 }

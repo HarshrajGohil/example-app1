@@ -5,6 +5,8 @@
 
 
 
+
+
       <section class="hero-wrap hero-wrap-2" style="background-image: url('img/bg_2.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -76,23 +78,24 @@
 
               <div class='col-sm-3'>
               <img src={{($value['pro_image'])}} class='img-fluid'>
-              <p>{{$value['pro_name']}}</p>    
+              <p>{{$value['pro_name']}}</p>
+
+			     
               <p>&#x20B9;{{$value['pro_price']}}</p>
     
-               <a  class="fa fa-shopping-cart btn btn-primary text-white">
+               <a  class="fa fa-shopping-cart btn btn-primary text-white"  onClick="addProduct('<?php echo $value["pid"];?>');">
+				
+			     <a href='singleproduct/{{$value['pid'] }}' class="fa fa-eye btn btn-primary"></a>
 			   
 			   </a>
-			     <a href='singleproduct/{{$value['pid'] }}' class="fa fa-eye btn btn-primary">
-               
-			   </a>
+
+			   <input type='hidden' id='productId' value='<?php echo $value["pid"]?>'> </p>
+			   
+			 
               
               </div>
               
               @endforeach
-			    <br><div class="d-flex justify-content-center">
-
-               {{ $prod->links() }}
-              </div> 
              
 
 
@@ -100,9 +103,45 @@
 
 
        </div>
+	   <br><div class="d-flex justify-content-center">
+
+               {{ $prod->links() }}
+              </div> 
     	</div>
-    </section>
-
-
-
+    </section> 
 @endsection 
+
+<script>
+function addProduct(ids)
+{
+alert(ids) 
+
+ $.ajax({
+                url: "{{route('cart.store')}}",
+                type:"POST" ,
+                data: {
+					"_token": "{{ csrf_token() }}",
+
+                    pid:ids,
+					
+                    
+                },
+				         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+
+                success:function(response)
+                {
+                    if(response){
+                       alert('hello data complete')
+                    }
+                }
+            });
+
+
+	
+
+}
+</script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>

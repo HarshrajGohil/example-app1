@@ -12,33 +12,35 @@
     </div>
 
     <div class="col-lg-7">
-      <form class="my-form" method="post">
+      <form class="my-form" method="post" action = {{ url('send-email') }} >
+
+      @csrf
         <div class="row">
           <div class="col-md-9">
             <div class="row mb-4">
               <div class="col-md-6 mb-4 mb-md-0">
                 <div class="form-outline">
-                  <input type="text" id="form3Example1" class="form-control" placeholder="Name" />
+                  <input type="text" id="form3Example1" class="form-control" placeholder="Name"  name='name'/>
                   <label for="form-name"></label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-outline">
-                  <input type="email" id="form3Example2" class="form-control" placeholder="Email Address" />
+                  <input type="email" id="form3Example2" class="form-control" placeholder="Email Address" name='email'/>
                   <label class="form-label" for="form3Example2"></label>
                 </div>
               </div>
             </div>
             <div class="form-outline mb-4">
-              <input type="text" id="form3Example3" class="form-control" placeholder="Telephone" />
+              <input type="text" id="form3Example3" class="form-control" placeholder="Telephone" name='mobile' />
               <label class="form-label" for="form3Example3"></label>
             </div>
             <div class="form-outline mb-4">
-              <textarea class="form-control" id="form4Example3" rows="4" placeholder="Message"></textarea>
+              <textarea class="form-control" id="form4Example3" rows="4" placeholder="Message" name='message'></textarea>
               <label class="form-label" for="form4Example3"></label>
             </div>
             <div class="text-center text-md-start">
-              <button type="submit" class="btn btn-primary mb-5 mb-md-0">
+              <button type="submit" class="btn btn-primary mb-5 mb-md-0" name='submit'>
                 Send
               </button>
             </div>

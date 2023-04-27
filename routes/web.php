@@ -124,6 +124,10 @@ Route::get('/userforgotpassword', function () {
     return view('user.userforgotpassword');
 });
 
+Route::get('/checkout', function () {
+    return view('user.checkout');
+});
+
 Route::get('/usermaster', function () {return view('user.usermaster');
 });
 
@@ -215,10 +219,16 @@ Route::get('/doctorregister', function () {
 Route::any('/showdoctor', [DoctorController::class, 'showdr']);
 
 
-Route::get('/send-email', [EmailController::class, 'index']);
+Route::any('/send-email', [EmailController::class, 'index']);
 
 
 
+
+Route::any('/deletecart/{id}', [CartController::class, 'deletecart']); 
+
+Route::any('/updatecart/{id}', [CartController::class, 'incresedata']);
+
+Route::any('/updatedec/{id}', [CartController::class, 'decreasedata']);
 
 
 
