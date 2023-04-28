@@ -94,6 +94,14 @@
             font-size: 2rem;
             color: #0093c4;
         }
+
+        .checked {
+            color : yellow;
+            font-size : 20px;
+        }
+        .unchecked {
+            font-size : 20px;
+        }
    
 
         /* Small devices (landscape phones, less than 768px) */
@@ -172,9 +180,7 @@
                 </div>
               
                         
-                    <div class="col-md-1 icon">
-                        <i class="fa-brands fa-rocketchat questions-icon"></i>
-                    </div>
+                   
                     
                 </div>
 
@@ -211,36 +217,62 @@
       @csrf
         <p class="text-center"><strong>Your Rating:</strong></p>
 
-        <div class="form-check mb-2">            
+        <div class="form-check mb-2">    
+    
+      
           <input class="form-check-input" type="radio" name="rev_stars" id="radio3Example1" value='5' />
           <label class="form-check-label" for="radio3Example1" >
           
-          
             Very good
+            
+           <span class = "fa fa-star checked"></span>
+        <span class = "fa fa-star checked"></span>
+        <span class = "fa fa-star checked"></span>
+        <span class = "fa fa-star checked"></span>   
+        <span class = "fa fa-star checked"></span>  
+          
           </label>
         </div>
         <div class="form-check mb-2">
           <input class="form-check-input" type="radio" name="rev_stars" id="radio3Example2" value='4' />
           <label class="form-check-label" for="radio3Example2">
             Good
+                <span class = "fa fa-star checked"></span>
+        <span class = "fa fa-star checked"></span>
+        <span class = "fa fa-star checked"></span>
+        <span class = "fa fa-star checked"></span> 
+          
           </label>
         </div>
         <div class="form-check mb-2">
           <input class="form-check-input" type="radio" name="rev_stars" id="radio3Example3" value='3' />
           <label class="form-check-label" for="radio3Example3">
             Medicore
+
+                <span class = "fa fa-star checked"></span>
+        <span class = "fa fa-star checked"></span>
+        <span class = "fa fa-star checked"></span>
+       
+          
           </label>
         </div>
         <div class="form-check mb-2">
           <input class="form-check-input" type="radio" name="rev_stars" id="radio3Example4" value='2'/>
           <label class="form-check-label" for="radio3Example4">
             Bad
+
+             <span class = "fa fa-star checked"></span>
+        <span class = "fa fa-star checked"></span>
+        
           </label>
         </div>
         <div class="form-check mb-2">
           <input class="form-check-input" type="radio" name="rev_stars" id="radio3Example5" value='1'/>
           <label class="form-check-label" for="radio3Example5">
             Very bad
+
+             <span class = "fa fa-star checked"></span>
+         
           </label>
         </div>
 

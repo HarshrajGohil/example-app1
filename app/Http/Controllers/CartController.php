@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product; 
 use App\Models\User; 
-use App\Models\Cart;
+use App\Models\Cart; 
+use App\Models\Order;
+
 use DB;
 use Session;
 
@@ -28,12 +30,13 @@ class CartController extends Controller
         where('user_id','=',$uid)->
         get();
 
+        $total = Cart::where('user_id',$uid)->
+        join('product', 'product.id', '=', 'cart.pro_id')
+        ->sum(DB::raw('product.pro_price * cart.quantity')); 
 
-        $total = DB::table('cart')->
-        join('product', 'product.id', '=', 'cart.pro_id')->
-        where('user_id','=',$uid)->sum('pro_price');
-        return view('user.usercart',['cart'=>$data,'total'=>$total]);
-    }
+  return view('user.usercart',['cart'=>$data,'total'=>$total]); 
+
+}
 
     /**
      * Show the form for creating a new resource.
@@ -43,6 +46,47 @@ class CartController extends Controller
     public function create()
     {
         //
+    }
+
+
+    public function checkout(Request $request)
+    {
+        $uid = $request->session()->get('uid');  
+
+        $cartdata = Cart::where('user_id',$uid)->get(); 
+
+        $cartdata = json_encode($cartdata);  
+
+
+        $data = Cart::select('*','product.id as pid','cart.id as cartId')->
+        join('product', 'product.id', '=', 'cart.pro_id')->
+        where('user_id','=',$uid)->
+        get();
+
+
+
+
+
+        $total = Cart::where('user_id',$uid)->
+        join('product', 'product.id', '=', 'cart.pro_id')
+        ->sum(DB::raw('product.pro_price * cart.quantity')); 
+
+        $orderData = new Order();
+        $orderData->allorder = $cartdata;
+        $orderData->u_id = $uid;
+        $orderData->amount = $total;
+        $orderData->save(); 
+
+        return view('user.checkout',['data'=>$data,'total'=>$total]);
+
+
+       
+
+
+
+
+
+
     }
 
     /**

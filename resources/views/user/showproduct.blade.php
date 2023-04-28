@@ -131,7 +131,7 @@ alert(ids)
                 success:function(response)
                 {
                     if(response){
-                       alert('hello data complete')
+                       alert('your product has been added to the cart')
                     }
                 }
             });

@@ -32,7 +32,6 @@
                         <th scope="col">Password</th>
                         <th scope="col">Address</th>
                         <th scope="col">Contact No</th>
-                        <th scope="col">Is Admin</th>
 
                        
                         <th scope="col">Action</th>
@@ -49,7 +48,7 @@
                          <td>{{ $value['password']}}</td>
                           <td>{{ $value['address']}}</td>
                            <td>{{ $value['contact_no']}}</td>
-                            <td>{{ $value['is_admin']}}</td>
+                        
                         <td><a class="" href="">
                                 
                                <i class="fas fa-eye"></i>

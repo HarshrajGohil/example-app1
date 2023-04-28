@@ -17,7 +17,10 @@ use App\Http\Controllers\ShowProductController;
 use App\Http\Controllers\CartController;
 
 use App\Http\Controllers\DoctorController; 
+
 use App\Http\Controllers\EmailController;
+
+use App\Http\Controllers\OrderController;
 
 
 
@@ -161,6 +164,10 @@ Route::get('/usercart', function () {
     return view('user.usercart');
 });
 
+Route::get('/adminshoworder', function () {
+    return view('admin.showorder');
+});
+
 //Route::get('/showproduct', function () {
 //    return view('user.showproduct');
 //});
@@ -206,6 +213,12 @@ Route::any('/editprofile', [UserController::class, 'userprofile']);
 Route::resources([
     'doctor' => DoctorController::class,
     
+]); 
+
+
+Route::resources([
+    'order' => OrderController::class,
+    
 ]);
 
 Route::get('/doctorregister', function () {
@@ -230,6 +243,7 @@ Route::any('/updatecart/{id}', [CartController::class, 'incresedata']);
 
 Route::any('/updatedec/{id}', [CartController::class, 'decreasedata']);
 
+Route::any('/checkout', [CartController::class, 'checkout']);
 
 
 

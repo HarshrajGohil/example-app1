@@ -142,7 +142,6 @@ class ProductController extends Controller
     {
         //
 
-        echo $id;
     
 
         $data = Product::where('product.id',$id)->

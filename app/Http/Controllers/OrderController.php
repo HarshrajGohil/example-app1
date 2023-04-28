@@ -3,9 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ShowProduct;
+use App\Models\Product; 
+use App\Models\User; 
+use App\Models\Cart; 
+use App\Models\Order; 
+use App\Models\Billing;
 
-class ShowProductController extends Controller
+
+use DB;
+use Session;
+
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,16 +23,6 @@ class ShowProductController extends Controller
     public function index()
     {
         //
-        $data = ShowProduct::select('*','product.id as pid')->
-        join('subcategory', 'subcategory.id', '=', 'product.cat_id')->
-        
-        orderBy('product.id', 'DESC')->
-        paginate(4);
-       
-
-        
-
-        return view('user.showproduct',['prod'=>$data]);
     }
 
     /**
@@ -45,7 +43,36 @@ class ShowProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // 
+
+        $userid = $request->session()->get('uid'); 
+
+
+       // $userid = $request->session()->get('uid'); 
+
+       $bildata = new Billing();
+
+        $bildata->first_name = $request->first_name;
+        $bildata->last_name = $request->last_name;
+        $bildata->email = $request->email;
+        $bildata->address = $request->address;
+        $bildata->contact_no = $request->contact_no; 
+        $bildata->card = $request->card; 
+        $bildata->name_on_card = $request->name_on_card ; 
+        $bildata->credit_card_number = $request->credit_card_number; 
+        $bildata->expiration = $request->expiration; 
+        $bildata->cvv = $request->cvv; 
+
+        $bildata->save();   
+
+        DB::table('cart')->where('user_id', $userid)->delete();
+
+        return  redirect('/');;
+
+
+
+
+    
     }
 
     /**

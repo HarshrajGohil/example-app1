@@ -69,7 +69,7 @@
 
         <span>{{$total}}</span>
 
-    <div class='col-sm-3'>    <button class='btn btn-primary'>CheckOut</button>
+    <div class='col-md-12 text-center'>  <a href={{url('checkout')}}>  <button class='btn btn-primary'>CheckOut</button> <a/>
     
 </div>
 

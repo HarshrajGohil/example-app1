@@ -66,8 +66,13 @@ class UserController extends Controller
     public function show($id)
     {
         
-        //
+        echo $id; 
+        $user = User::find($id);
+        echo($user->first_name);
+        return view('admin.showorder',['user'=>$user]);
+         
         // $data = User::where('user.id',$id)->get();
+        
     }
 
     public function checklogin(Request $request)
