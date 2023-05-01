@@ -29,7 +29,7 @@ html {
 .about-section {
   padding: 50px;
   text-align: center;
-  background-color: #474e5d;
+  background-color:96c8a2;
   color: white;
 }
 
@@ -75,10 +75,8 @@ html {
 
 <div class="about-section">
   <h1>About Us Page</h1>
-  <p>Some text about who we are and what we do.</p>
   <p>It is an interactive and user-friendly online E-commerce platform for Purchasing different types of pets and their related products.
 There are four main module of the system that can be access by user are: 
-	- Buy Pets
 	- Buy Pet Accessories and different products
 	- Appoint Vaternity Doctors
 User can view the feedback about system given by other users. User can place order for that and also have option for online 

@@ -196,13 +196,13 @@
     <div class="mx-0 mx-sm-auto">
   <div class="card">
     <div class="card-header bg-primary">
-      <h5 class="card-title text-white mt-2" id="exampleModalLabel">Feedback request</h5>
+      <h5 class="card-title text-white mt-2" align="center" id="exampleModalLabel">Feedback request</h5>
     </div>
     <div class="modal-body">
       <div class="text-center">
         <i class="far fa-file-alt fa-4x mb-3 text-primary"></i>
         <p>
-          <strong>Your opinion matters</strong>
+          
         </p>
         <p>
           Have some ideas how to improve our product?

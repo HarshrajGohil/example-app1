@@ -56,7 +56,7 @@
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="index.html"><span class="flaticon-pawprint-1 mr-2"></span>Doggy Den</a>
+	    	<a class="navbar-brand" href=""><span class="flaticon-pawprint-1 mr-2"></span>Doggy Den</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
@@ -129,7 +129,7 @@
 				<div class="row">
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 						<h2 class="footer-heading">About Store </h2>
-						<span class="icon fa fa-envelope"></span> <span class="text">Email:doggyden001@gmail.com</span>
+						<span class="icon fa fa-envelope"></span><span class="text"> doggyden001@gmail.com</span>
 						<ul class="ftco-footer-social p-0">
               <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
               <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>

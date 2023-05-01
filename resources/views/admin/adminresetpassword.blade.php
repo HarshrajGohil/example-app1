@@ -51,21 +51,38 @@
         </div>
     @endif
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="" class="">
+                            <a href="index.html" class="">
                                 <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Doggy Den</h3>
                                 
-                                </a>
-                            <h3>Forgot Password</h3>
+                            </a>
+                            <h3>Sign In</h3>
                         </div>
                         <div class="form-floating mb-3">
                         <form method="post" action = "checkadminlogin">
                          @csrf
                             <input type="email" class="form-control" 
-                            id="floatingInput" placeholder="name@example.com" name='email'>
-                            <label for="floatingInput">Email address</label>
+                            id="floatingInput" placeholder="OTP" name='otp'>
+                            <label for="floatingInput">OTP</label>
                         </div>
-                       
-                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Submit</button>
+                        <div class="form-floating mb-4">
+                            <input type="password" class="form-control" id="floatingPassword"
+                            name='password'
+                            placeholder="Password">
+                            <label for="floatingInput">Enter Password</label>
+                        </div>
+                         <div class="form-floating mb-4">
+                            <input type="password" class="form-control" id="floatingPassword"
+                            name='password'
+                            placeholder="confirm password">
+                            <label for="floatingPassword">Confirm Password</label>
+                        </div>
+                        <div class="d-flex align-items-center justify-content-between mb-4">
+                            <div class="form-check">
+                               
+                            </div>
+                            
+                        </div>
+                        <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Reset Password</button>
                         </form>
                         
                     </div>

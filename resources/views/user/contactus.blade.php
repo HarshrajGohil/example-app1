@@ -51,13 +51,10 @@
                 <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
                 <p><small>New York, NY 10012, USA</small></p>
               </li>
-              <li>
-                <i class="fas fa-phone fa-2x text-primary"></i>
-                <p><small>+ 01 234 567 89</small></p>
-              </li>
+             
               <li>
                 <i class="fas fa-envelope fa-2x text-primary"></i>
-                <p><small>contact@gmail.com</small></p>
+                <p><small>doggyden001@gmail.com</small></p>
               </li>
             </ul>
           </div>

@@ -73,7 +73,7 @@
                                 <br>
                               	<button class="btn btn-lg btn-success" type="submit">
                                 <i class="glyphicon glyphicon-ok-sign"></i> Update Profile</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                              
                             </div>
                       </div>
               	</form>

@@ -35,13 +35,13 @@
         <button class='btn btn-primary' onClick="increse('<?php echo $value["cartId"];?>');">
         +
         </button>
-
-
+        
        <input type='text'  value={{$value['quantity']}}>
-
+    
          <button class='btn btn-primary' onClick="decrease('<?php echo $value["cartId"];?>');">
          -
          </button>
+        
         </td>
       <td><span id='totaldata'>{{ $value['pro_price'] * $value['quantity']}}</span></td> 
 
@@ -67,9 +67,9 @@
         <div class='col-sm-3'></div>
         <div class='col-sm-3'></div>
 
-        <span>{{$total}}</span>
+        <span>Cart Total : {{$total}}</span>
 
-    <div class='col-md-12 text-center'>  <a href={{url('checkout')}}>  <button class='btn btn-primary'>CheckOut</button> <a/>
+    <div class='col-md-12 text-center'>  <a href={{url('checkout')}}>  <button class='btn btn-primary'>CheckOut</button> </a>
     
 </div>
 

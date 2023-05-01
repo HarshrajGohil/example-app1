@@ -123,6 +123,10 @@ Route::get('/adminforgotpassword', function () {
     return view('admin.adminforgotpassword');
 });
 
+Route::get('/adminresetpassword', function () {
+    return view('admin.adminresetpassword');
+});
+
 Route::get('/userforgotpassword', function () {
     return view('user.userforgotpassword');
 });
@@ -159,6 +163,9 @@ Route::get('/register', function () {
     return view('user.register');
 });
 
+Route::get('/userresetpassword', function () {
+    return view('user.userresetpassword');
+});
 
 Route::get('/usercart', function () {
     return view('user.usercart');
