@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product; 
-use App\Models\Subcategory;
+use App\Models\Subcategory; 
+use App\Models\Category;
+
 use Session;
 use DB;
 
@@ -96,14 +98,7 @@ class ProductController extends Controller
         $productId = $prod->id; 
         // $school_id = School::latest()->first()->id;
 
-
-
-
-
-
-
-
-        foreach($files as $file){ 
+            foreach($files as $file){ 
             $destinationPath1 = 'img';
 
             $filename = $file->getClientOriginalName();
@@ -140,11 +135,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
-
-    
-
-        $data = Product::where('product.id',$id)->
+        $data = Product::select('*','product.id as pid')->where('product.id',$id)->
         join('subcategory', 'subcategory.id', '=', 'product.cat_id')->get();
 
 
@@ -153,13 +144,8 @@ class ProductController extends Controller
 
         $allReview = DB::table('review')->join('user','user.id', '=', 'review.user_id')->where('product_id',$id)->get();
 
-        // $allPro = DB::table('product')->where('pro_image',$id)->get();
+    
 
-      
-
-        // echo "<pre>";
-        
-        // print_r($data); 
 
          return view('user.singleproduct',['data'=>$data,'allImg'=>$allImg,'allReview'=>$allReview]);
 
@@ -189,8 +175,6 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        // 
-
         
          $prod = Product::find($id);
          $allprod = Subcategory::get();
@@ -243,4 +227,62 @@ class ProductController extends Controller
         Session::flash('alert-class', 'alert-success');
         return redirect('product')->with('delete','Product deleted..');;
     }
+
+    public function searchdata(Request $request)
+    {
+        $term = $request->searterm;
+
+        // echo $term;
+
+        $data = Product::where('pro_name',$term)->get();
+
+        $catid = Subcategory::select('Subcategory.id')->where('sub_cate_name',$term)->get(); 
+        
+        $catid_data = Category::select('category.id')->where('cate_name',$term)->get(); 
+
+    if(!$catid->isEmpty())
+    {
+      $data = Product::where('cat_id',$catid[0]->id)->get();  
+      
+
+    }
+
+    else if(!$catid_data->isEmpty())
+     {
+      
+      $subdataIds  = Subcategory::select('id')->where('cat_id',$catid_data[0]->id)->get();  
+
+      $sundata = $subdataIds->toArray(); 
+ 
+
+
+      $last_names = array_column($sundata, 'id'); 
+
+      $data = Product::whereIn('id', $last_names)->get(); 
+
+
+
+
+      print_r($data);
+
+
+      
+      
+
+
+    }
+
+    if($catid_data->isEmpty() && $catid->isEmpty() && $data->isEmpty()) 
+    {
+
+        return view('user.data404');
+
+    }
+    else 
+    {
+        return view('user.search',['prod'=>$data]);
+    }
+
+   
+   }
 }

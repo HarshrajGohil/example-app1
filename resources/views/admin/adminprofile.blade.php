@@ -12,7 +12,7 @@
     <div class="row">
   		<div class="col-sm-10"><h1>User name</h1></div>
     	<div class="col-sm-2">
-        <a href="/users" class="pull-right"><img title="profile image" class="img-circle img-responsive" src="http://www.gravatar.com/avatar/28fd20ccec6865e2d5f0e1f4446eb7bf?s=100"></a></div>
+       </div>
     </div>
     <div class="row">
   		<div class="col-sm-3"><!--left col-->
@@ -30,8 +30,7 @@
     	<div class="col-sm-9">
             <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-                <li><a data-toggle="tab" href="#messages">Menu 1</a></li>
-                <li><a data-toggle="tab" href="#settings">Menu 2</a></li>
+                
               </ul>
 
               
@@ -94,7 +93,7 @@
                                 <br>
                               	<button class="btn btn-lg btn-success" type="submit">
                                 <i class="glyphicon glyphicon-ok-sign"></i> Update Profile</button>
-                               	<button class="btn btn-lg" type="reset"><i class="glyphicon glyphicon-repeat"></i> Reset</button>
+                               
                             </div>
                       </div>
               	</form>

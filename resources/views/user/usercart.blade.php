@@ -43,6 +43,8 @@
          </button>
         
         </td>
+
+        
       <td><span id='totaldata'>{{ $value['pro_price'] * $value['quantity']}}</span></td> 
 
 

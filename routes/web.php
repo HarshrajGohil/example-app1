@@ -203,7 +203,10 @@ Route::any('/checklogin', [UserController::class, 'checklogin']);
 Route::any('/checkadminlogin', [UserController::class, 'adminlogin']);
 
 
-Route::any('/logout', [UserController::class, 'logout']);
+Route::any('/logout', [UserController::class, 'logout']); 
+
+Route::any('/search', [ProductController::class, 'searchdata']);
+
 
 Route::any('/adminlogout', [UserController::class, 'adminlogout']);
 

@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="user/css/flaticon.css">
    
     <link rel="stylesheet" href="{{ URL::asset ("user/css/style.css")}}">
+
    
 
   </head>
@@ -73,33 +74,32 @@
              @endif
                @if(!(Session::get('userName')))  
               <li class="nav-item"><a href="{{ url('login') }}" class="nav-link">Login</a></li>
+              
+              <div class="search-container"><br><br>
                @endif
-
+  
             
            
 
     @if(!empty(Session::get('userName')))  
 
-            <li class="nav-item"><a href="cart" class="nav-link">Cart</a></li> 
-            <li class="nav-item"><a href="editprofile" class="nav-link">Profile</a></li> 
-               <li class="nav-item"><a href="" class="nav-link">Order</a></li> 
+            <li class="nav-item"><a href="{{ url('cart') }}" class="nav-link">Cart</a></li> 
+            <li class="nav-item"><a href="{{ url('editprofile') }}" class="nav-link">Profile</a></li> 
+              
 
      <li class="nav-item"><a href="cart" class="nav-link">Hello 
-                {{ Session::get('userName') }}
+     
+          {{ Session::get('userName') }}
 
             </a></li>   
 
         
         <li class="nav-item"><a href="{{ url('logout') }}" class="nav-link">Logout</a></li>  
+ 
 
       @endif
 
-
- 
-     
-                        
-
-          
+            
 
 	        </ul>
 	      </div>
@@ -166,7 +166,7 @@
 						<h2 class="footer-heading">Information</h2>
 						<div class="block-23 mb-3">
               <ul>
-                <li><a href="{{ url('aboutsus') }}"><span class="icon fa fa-map"></span><span class="text">About Us</span></a></li>
+                <li><a href="{{ url('aboutus') }}"><span class="icon fa fa-map"></span><span class="text">About Us</span></a></li>
                 <li><a href="{{ url('contactus') }}"><span class="icon fa fa-phone"></span><span class="text">Contact Us</span></a></li>
                 <li><a href="{{ url('editprofile') }}"><span class="icon fa fa-user"></span><span class="text">Edit Profile</span></a></li>
               </ul>

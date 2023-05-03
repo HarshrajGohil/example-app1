@@ -10,7 +10,7 @@
       <section class="hero-wrap hero-wrap-2" style="background-image: url('img/bg_2.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"> 
 
-	  <form method="post" action = {{ url('search') }} style="justify-content:center;  display: flex;">
+	  <form method="post" action = {{ url('search') }} align="center">
 	  @csrf
   <input type="search" placeholder="Search Product Or Category Wise..." name='searterm'>
   <button type="submit">Search</button>
@@ -114,7 +114,6 @@
        </div>
 	   <br><div class="d-flex justify-content-center">
 
-               {{ $prod->links() }}
               </div> 
     	</div>
     </section> 

@@ -1,3 +1,4 @@
+
 @extends('user.usermaster')
 @section('content')
 <style>
@@ -122,7 +123,7 @@
         <div class="row">
             <div class="col-md-5">
                 <div class="main-img">
-                    <img class="img-fluid" src="{{"../".$data[0]['pro_image']}}" alt="ProductS">
+                    <img class="img-fluid" src="{{"../".$data[0]['pro_image']}}" alt="ProductS" height=50 width=50>
                     <div class="row my-3 previews">
                   
                   @foreach($allImg as $valueImg)
@@ -161,12 +162,19 @@
                           
                         </div>
                         <div class="block">
-                            <button class="btn btn-success">Add to cart</button>
+
+                          <a  class="fa fa-shopping-cart btn btn-primary text-white btn btn-success"  
+                          onClick="addProduct('<?php echo $data[0]['pid'];?>');">  
+
+                          Add To Cart
+                          </a>
+
+
                         </div>
 
-                        <div class="block quantity">
+                        {{-- <div class="block quantity">
                             <input type="number" class="form-control" id="cart_quantity" value="1" min="1" max="20" placeholder="Enter email" name="cart_quantity">
-                        </div>
+                        </div> --}}
                     </div>
 
 
@@ -279,7 +287,7 @@
         <input type='hidden' value={{Session::get('uid')}} name='user_name'/> 
 
 
-                <input type='hidden' value={{$data[0]['id']}} name='pro_name'/> 
+                <input type='hidden' value={{$data[0]['pid']}} name='pro_name'/> 
 
 
 
@@ -419,3 +427,37 @@
 
 
 
+<script>
+function addProduct(ids)
+{
+alert(ids) 
+
+ $.ajax({
+                url: "{{route('cart.store')}}",
+                type:"POST" ,
+                data: {
+					"_token": "{{ csrf_token() }}",
+
+                    pid:ids,
+					
+                    
+                },
+				         headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+
+                success:function(response)
+                {
+                    if(response){
+                       alert('your product has been added to the cart')
+                    }
+                }
+            });
+
+
+	
+
+}
+</script>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
