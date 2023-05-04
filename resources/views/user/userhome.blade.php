@@ -278,69 +278,72 @@
 		
 		
 				
-    				<center><h2 class="mb-4">Free Consultation</h2></center>
-					<div class="row d-md-flex justify-content-end">
-				
-					<div class="container">
-    				<form action="#" class="appointment">
-    					<div class="row">
-    						<div class="col-md-12">
-									<div class="form-group">
-			    					<div class="form-field">
-	          					<div class="select-wrap">
-	                      <div class="icon"><span class="fa fa-chevron-down"></span></div>
-	                      <select name="" id="" class="form-control">
-	                      	<option value="">Select services</option>
-	                        <option value="">Cat Sitting</option>
-	                        <option value="">Dog Walk</option>
-	                        <option value="">Pet Spa</option>
-	                        <option value="">Pet Grooming</option>
-	                        <option value="">Pet Daycare</option>
-	                      </select>
-	                    </div>
-			              </div>
-			    				</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-			              <input type="text" class="form-control" placeholder="Your Name">
-			            </div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-			              <input type="text" class="form-control" placeholder="Vehicle number">
-			            </div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-			    					<div class="input-wrap">
-			            		<div class="icon"><span class="fa fa-calendar"></span></div>
-			            		<input type="text" class="form-control appointment_date" placeholder="Date">
-		            		</div>
-			    				</div>
-								</div>
-								<div class="col-md-6">
-									<div class="form-group">
-			    					<div class="input-wrap">
-			            		<div class="icon"><span class="fa fa-clock-o"></span></div>
-			            		<input type="text" class="form-control appointment_time" placeholder="Time">
-		            		</div>
-			    				</div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-			              <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
-			            </div>
-								</div>
-								<div class="col-md-12">
-									<div class="form-group">
-			              <input type="submit" value="Send message" class="btn btn-primary py-3 px-4">
-			            </div>
-								</div>
-    					</div>
-	          </form>
-    			</div>
-				</div>
+    				<section class="text-center">
+
+
+  <h3 class="mb-5">Contact us</h3>
+
+  <div class="row">
+    <div class="col-lg-5">
+     <div style="width: 100%"><iframe width="93%" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Ahmedabad+(doggy_den)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.maps.ie/distance-area-calculator.html">area maps</a></iframe></div>
+    </div>
+
+    <div class="col-lg-7">
+      <form class="my-form" method="post" action = {{ url('send-email') }} >
+
+      @csrf
+        <div class="row">
+          <div class="col-md-9">
+            <div class="row mb-4">
+              <div class="col-md-6 mb-4 mb-md-0">
+                <div class="form-outline">
+                  <input type="text" id="form3Example1" class="form-control" placeholder="Name"  name='name'/>
+                  <label for="form-name"></label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-outline">
+                  <input type="email" id="form3Example2" class="form-control" placeholder="Email Address" name='email'/>
+                  <label class="form-label" for="form3Example2"></label>
+                </div>
+              </div>
+            </div>
+            <div class="form-outline mb-4">
+              <input type="text" id="form3Example3" class="form-control" placeholder="Telephone" name='mobile' />
+              <label class="form-label" for="form3Example3"></label>
+            </div>
+            <div class="form-outline mb-4">
+              <textarea class="form-control" id="form4Example3" rows="4" placeholder="Message" name='message'></textarea>
+              <label class="form-label" for="form4Example3"></label>
+            </div>
+            <div class="text-center text-md-start">
+              <button type="submit" class="btn btn-primary mb-5 mb-md-0" name='submit'>
+                Send
+              </button>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <ul class="list-unstyled">
+              <li>
+                <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
+                <p><small>Ahmedabad</small></p>
+              </li>
+             
+              <li>
+                <i class="fas fa-envelope fa-2x text-primary"></i>
+                <p><small>doggyden001@gmail.com</small></p>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+  
+
+
+</section>
 				</div>
 
 
