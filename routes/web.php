@@ -45,9 +45,12 @@ Route::get('/data', function () {
 }); 
 
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-});
+// Route::get('/dashboard', function () {
+//     return view('admin.dashboard');
+// });
+
+Route::any('/dashboard', [UserController::class, 'datadashboard']);
+
 
 //    Route::get('/addcategory', function () {
 //        return view('admin.addcategory');
@@ -135,6 +138,14 @@ Route::get('/checkout', function () {
     return view('user.checkout');
 });
 
+ 
+
+
+Route::any('/checkemailsend', [EmailController::class, 'checkemail']);
+
+Route::any('/admincheckemailsend', [EmailController::class, 'admincheckemail']);
+
+
 Route::get('/usermaster', function () {return view('user.usermaster');
 });
 
@@ -173,7 +184,8 @@ Route::get('/usercart', function () {
 
 Route::get('/adminshoworder', function () {
     return view('admin.showorder');
-});
+}); 
+
 
 //Route::get('/showproduct', function () {
 //    return view('user.showproduct');
@@ -198,6 +210,12 @@ Route::any('/singleproduct/{id}', [ProductController::class, 'show']);
 
 Route::any('/checklogin', [UserController::class, 'checklogin']);
 
+
+ 
+
+Route::any('/resetpsw', [EmailController::class, 'resetdata']);
+
+Route::any('/adminresetpsw', [EmailController::class, 'adminresetdata']);
 
 
 Route::any('/checkadminlogin', [UserController::class, 'adminlogin']);

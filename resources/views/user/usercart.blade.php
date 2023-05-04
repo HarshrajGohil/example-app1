@@ -32,11 +32,11 @@
         </td>
 
         <td>
-        <button class='btn btn-primary' onClick="increse('<?php echo $value["cartId"];?>');">
+        <button class='btn btn-primary' onClick="increse('<?php echo $value["cartId"];?>');" >
         +
         </button>
         
-       <input type='text'  value={{$value['quantity']}}>
+       <input type='text'  value={{$value['quantity']}} style='width:40px'>
     
          <button class='btn btn-primary' onClick="decrease('<?php echo $value["cartId"];?>');">
          -

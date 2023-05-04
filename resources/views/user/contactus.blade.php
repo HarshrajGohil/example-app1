@@ -49,7 +49,7 @@
             <ul class="list-unstyled">
               <li>
                 <i class="fas fa-map-marker-alt fa-2x text-primary"></i>
-                <p><small>New York, NY 10012, USA</small></p>
+                <p><small>Ahmedabad</small></p>
               </li>
              
               <li>

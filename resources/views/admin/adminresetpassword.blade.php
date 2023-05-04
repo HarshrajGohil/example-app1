@@ -58,9 +58,10 @@
                             <h3>Sign In</h3>
                         </div>
                         <div class="form-floating mb-3">
-                        <form method="post" action = "checkadminlogin">
+                        <p>Hello</p>{{$email}}
+                        <form method="post" action = {{ url('adminresetpsw') }}>
                          @csrf
-                            <input type="email" class="form-control" 
+                            <input type="text" class="form-control" 
                             id="floatingInput" placeholder="OTP" name='otp'>
                             <label for="floatingInput">OTP</label>
                         </div>
@@ -72,7 +73,7 @@
                         </div>
                          <div class="form-floating mb-4">
                             <input type="password" class="form-control" id="floatingPassword"
-                            name='password'
+                            name='cpassword'
                             placeholder="confirm password">
                             <label for="floatingPassword">Confirm Password</label>
                         </div>

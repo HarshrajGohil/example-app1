@@ -4,17 +4,98 @@
 
 
 
+<style>
+
+       .search{
+       position: relative;
+       box-shadow: 0 0 40px rgba(51, 51, 51, .1); 
+
+         
+       }
+
+.hero-wrap.hero-wrap-2 .overlay 
+{
+	background:white;
+}
+
+       .search input{
+
+        height: 40px;
+        text-indent: 25px;
+        border: 2px solid #d6d4d4;
+		margin-top:20%;
+		z-index:999;
+		border:3px solid #000;
 
 
+       }
 
-      <section class="hero-wrap hero-wrap-2" style="background-image: url('img/bg_2.jpg');" data-stellar-background-ratio="0.5">
+
+       .search input:focus{
+
+        box-shadow: none;
+        border: 2px solid blue;
+
+
+       }
+
+       .search .fa-search{
+
+        position: absolute;
+        top: 20px;
+        left: 16px;
+
+       }
+
+       .search button{
+
+        position: absolute;
+        top: 75%;
+        left:77%;
+        height: 50px;
+        width: 170px;
+        background: blue;
+		z-index:999
+		
+		
+
+       }
+</style>
+
+
+      <section class="hero-wrap hero-wrap-2" style="background-image: url('img/bg_3.jpg');" 
+	  data-stellar-background-ratio="0.5">
       <div class="overlay"> 
 
-	  <form method="post" action = {{ url('search') }} style="justify-content:center;  display: flex;">
-	  @csrf
-  <input type="search" placeholder="Search Product Or Category Wise..." name='searterm'>
-  <button type="submit">Search</button>
-</form>
+
+
+
+<div class="container">
+
+                    <div class="row height d-flex justify-content-center align-items-center">
+
+                      <div class="col-md-8"> 
+
+
+					  
+
+
+
+
+                        <div class="search">
+
+						  	   <form method="post" action = {{ url('search') }} style="justify-content:center;  display: flex;">
+	  								@csrf
+                          <input type="text" class="form-control" placeholder="Category And Product Wise Search" name='searterm'>
+  <button type="submit" class='btn btn-primary'>Search</button>
+
+						  </form> 
+                        </div>
+                        
+                      </div>
+                      
+                    </div>
+                </div>
 	  
 	  </div>
       <div class="container">

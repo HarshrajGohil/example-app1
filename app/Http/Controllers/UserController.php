@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Session;
+use DB;
 
 class UserController extends Controller
 {
@@ -12,7 +13,30 @@ class UserController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     */ 
+    public function datadashboard()
+    {
+        $userCount = DB::table('user')->where('is_admin', '!=',1)->count();
+        
+        $productCount = DB::table('product')->count();
+
+        $orderCount = DB::table('billing')->count();
+
+        $reviewCount = DB::table('review')->count();
+
+
+        $data = [
+            'user'=>$userCount,
+            'products'=>$productCount,
+            'orders'=>$orderCount,
+            'reviews'=>$reviewCount,
+
+        ];
+        return view('admin.dashboard',$data);
+
+      
+   
+    }
     public function index()
     {
         //

@@ -237,6 +237,7 @@ class ProductController extends Controller
         $data = Product::where('pro_name',$term)->get();
 
         $catid = Subcategory::select('Subcategory.id')->where('sub_cate_name',$term)->get(); 
+
         
         $catid_data = Category::select('category.id')->where('cate_name',$term)->get(); 
 
@@ -249,8 +250,11 @@ class ProductController extends Controller
 
     else if(!$catid_data->isEmpty())
      {
+
+        // echo "in category";
       
       $subdataIds  = Subcategory::select('id')->where('cat_id',$catid_data[0]->id)->get();  
+
 
       $sundata = $subdataIds->toArray(); 
  
@@ -258,12 +262,13 @@ class ProductController extends Controller
 
       $last_names = array_column($sundata, 'id'); 
 
-      $data = Product::whereIn('id', $last_names)->get(); 
+
+
+      $data = Product::whereIn('cat_id', $last_names)->get(); 
 
 
 
 
-      print_r($data);
 
 
       

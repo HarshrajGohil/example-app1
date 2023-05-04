@@ -58,7 +58,7 @@
                             <h3>Forgot Password</h3>
                         </div>
                         <div class="form-floating mb-3">
-                        <form method="post" action = "checkadminlogin">
+                        <form method="post" action = {{ url('admincheckemailsend') }}>
                          @csrf
                             <input type="email" class="form-control" 
                             id="floatingInput" placeholder="name@example.com" name='email'>

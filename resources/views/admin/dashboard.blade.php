@@ -6,8 +6,10 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                 <i class="fa fa-chart-line fa-3x text-primary"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Today Sale</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <p class="mb-2">Users</p>
+                    <h6 class="mb-0">
+                    {{$user}}
+                    </h6>
                 </div>
             </div>
         </div>
@@ -15,8 +17,10 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                 <i class="fa fa-chart-bar fa-3x text-primary"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Total Sale</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <p class="mb-2">Products</p>
+                    <h6 class="mb-0">
+                     {{$products}}
+                    </h6>
                 </div>
             </div>
         </div>
@@ -24,8 +28,10 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                 <i class="fa fa-chart-area fa-3x text-primary"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Today Revenue</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <p class="mb-2">Orders</p>
+                    <h6 class="mb-0">
+                     {{$orders}}
+                    </h6>
                 </div>
             </div>
         </div>
@@ -33,8 +39,10 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
                 <i class="fa fa-chart-pie fa-3x text-primary"></i>
                 <div class="ms-3">
-                    <p class="mb-2">Total Revenue</p>
-                    <h6 class="mb-0">$1234</h6>
+                    <p class="mb-2">Reviews</p>
+                    <h6 class="mb-0">
+                     {{$reviews}}
+                    </h6>
                 </div>
             </div>
         </div>
