@@ -59,6 +59,19 @@ class DoctorController extends Controller
     {
 
         
+        $request->validate([
+            'full_name' => 'required|regex:/^[a-zA-Z]+$/u|max:20|',
+            'degree' => 'required|regex:/^[a-zA-Z]+$/u|max:20|',
+            'specialist' => 'required|regex:/^[a-zA-Z]+$/u|max:20|',
+            'about' => 'required|regex:/^[a-zA-Z]+$/u|max:30|',
+            'location' => 'required',
+            'email' => ['required', 'unique:doctor', 'max:30'],
+            'photo' => 'required',
+            'contact_no' => 'required|digits:10',
+         
+        ]);
+
+        
         $file = $request->file('photo'); 
         $files = $request->file('images');
         $destinationPath = 'img';

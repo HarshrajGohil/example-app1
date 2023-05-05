@@ -2,6 +2,15 @@
 @extends('user.usermaster')
 @section('content')
 <div class='container'>
+ @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 <form class="row g-3" method="post" action ={{ route('doctor.store') }}>
  @csrf
 <div class="col-md-6">
@@ -45,10 +54,8 @@
   
   <div class="col-12">
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" id="gridCheck">
-      <label class="form-check-label" for="gridCheck">
-        Check me out
-      </label>
+      
+    
     </div>
   </div>
   <div class="col-12">

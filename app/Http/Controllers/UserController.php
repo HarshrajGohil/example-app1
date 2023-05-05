@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\User; 
+use App\Models\Review;
+
 use Session;
 use DB;
 
@@ -14,6 +16,21 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */ 
+
+     public function homepage()
+     {
+        // $reviewdata = DB::table('review')->paginate(3);  
+
+        $reviewdata = Review::select('*','user.id as uid','product.id as pid','review.id as rid')->
+        join('user', 'user.id', '=', 'review.user_id')-> 
+        join('product', 'product.id', '=', 'review.product_id')->
+        orderby('review.id')->
+        paginate(3);
+        return view('user.userhome',['reviewdata'=>$reviewdata]);
+
+    
+    }
+
     public function datadashboard()
     {
         $userCount = DB::table('user')->where('is_admin', '!=',1)->count();
@@ -64,6 +81,18 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+
+        $request->validate([
+            'first_name' => 'required|regex:/^[a-zA-Z]+$/u|max:20|',
+            'last_name' => 'required|regex:/^[a-zA-Z]+$/u|max:20|',
+            'email' => ['required', 'unique:user', 'max:30'],
+            'password' => 'required', 'min:6','max:20',
+            'address' => 'required', 'max:255',
+            'contact_no' => 'required|digits:10',
+         
+        ]);
+
         //
         $user = new User;
  
@@ -101,6 +130,13 @@ class UserController extends Controller
 
     public function checklogin(Request $request)
     {
+        $request->validate([
+            'email' => ['required'],
+            'password' => 'required',
+    
+         
+        ]);
+
 
         $email = $request->email;
         $password = $request->password;
@@ -126,7 +162,6 @@ class UserController extends Controller
 
 
 
-       echo "hello...";
     }
 
 

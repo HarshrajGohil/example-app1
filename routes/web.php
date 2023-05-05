@@ -149,9 +149,7 @@ Route::any('/admincheckemailsend', [EmailController::class, 'admincheckemail']);
 Route::get('/usermaster', function () {return view('user.usermaster');
 });
 
-Route::get('/', function () {
-    return view('user.userhome');
-});
+
 
 Route::get('/aboutus', function () {
     return view('user.aboutus');
@@ -272,6 +270,10 @@ Route::any('/updatecart/{id}', [CartController::class, 'incresedata']);
 Route::any('/updatedec/{id}', [CartController::class, 'decreasedata']);
 
 Route::any('/checkout', [CartController::class, 'checkout']);
+Route::any('/', [UserController::class, 'homepage']);
 
 
 
+// Route::get('/', function () {
+//     return view('user.userhome');
+// });

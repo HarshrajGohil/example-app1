@@ -76,12 +76,16 @@
                             name='cpassword'
                             placeholder="confirm password">
                             <label for="floatingPassword">Confirm Password</label>
-                        </div>
+                        </div> 
+
+                     <input type='hidden' name='emaildata' value={{$email}}/>
+
+
+
                         <div class="d-flex align-items-center justify-content-between mb-4">
                             <div class="form-check">
                                
                             </div>
-                            
                         </div>
                         <button type="submit" class="btn btn-primary py-3 w-100 mb-4">Reset Password</button>
                         </form>

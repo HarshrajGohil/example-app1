@@ -7,6 +7,7 @@ use Mail;
 use App\Mail\SendMail;
 use DB;
 
+use App\Models\User;
 
 class EmailController extends Controller
 {
@@ -56,7 +57,7 @@ function adminresetdata(Request $request)
         $psw = $request->password;
         $npsw = $request->cpassword; 
         $email = $request->emaildata;  
-
+  echo $email;
         if($psw != $npsw)
         {
             return back()->with('success','Both Password are Not same chack and try again!..');
@@ -64,13 +65,16 @@ function adminresetdata(Request $request)
 
         else 
         {
-
-            $data = DB::table('user')->where('email',$email)->where('otp',$otpdata)->get();   
-        
+           
+            $data = DB::table('user')->where('email',"harshh6621@gmail.com")->where('otp',$otpdata)->get();   
+          
 
         if(!$data->isEmpty()) 
         {
-                $updated = DB::table('user')->where('email',$email)->update(['password' => $psw]);
+
+            echo $psw;
+            
+                $updated = DB::table('user')->where('email',"harshh6621@gmail.com")->update(['password' => $psw]);
 
                 
                 return redirect('/adminlogin')->with('success','Pssword Changed ..');; 

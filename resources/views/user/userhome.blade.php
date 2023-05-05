@@ -1,6 +1,20 @@
 @extends('user.usermaster')
 @section('content')
-
+<style>
+.testimonial-card .card-up {
+  height: 120px;
+  overflow: hidden;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+}
+.testimonial-card .avatar {
+  width: 110px;
+  margin-top: -60px;
+  overflow: hidden;
+  border: 3px solid #fff;
+  border-radius: 50%;
+}
+</style>
 <div class="hero-wrap" style="background-image: url('img//bg_1.jpg');width:100%" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
@@ -180,10 +194,16 @@
 	        </div>
         </div>
     	</div>
-    </section>
+    </section> 
+
+	
+
+	
 
     <section class="ftco-section testimony-section" style="background-image: url('img//bg_2.jpg');">
-    	<div class="overlay"></div>
+	
+    	<div class="overlay">
+		</div>
       <div class="container">
         <div class="row justify-content-center pb-5 mb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
@@ -272,7 +292,55 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> 
+
+
+
+	<section>
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-10 col-xl-8 text-center">
+      <h3 class="mb-4">Recent Review</h3>
+      
+    </div>
+  </div>
+
+  <div class="row text-center d-flex align-items-stretch">
+    @foreach($reviewdata as  $value) 
+ <div class="col-md-4 mb-5 mb-md-0 d-flex align-items-stretch">
+      <div class="card testimonial-card">
+        <div class="card-up" style="background-color: #00bd56;"></div>
+        <div class="avatar mx-auto bg-white">
+          <img src="./img/user.png"
+            class="rounded-circle img-fluid" />
+        </div>
+        <div class="card-body">
+          <h4 class="mb-4">{{$value->first_name}}</h4> 
+		  <h3>
+		  <?php
+		    for($i=1;$i<=$value->review_stars;$i++)
+			{
+				?>
+                       <i class="fas fa-star" style='color:yellow'></i>
+
+
+<?php
+			}
+
+		   ?>
+		  </h3>
+          <hr />
+          <p class="dark-grey-text mt-4">
+            <i class="fas fa-quote-left pe-2"></i>
+			{{$value->review_desc}}
+          </p>
+        </div>
+      </div>
+    </div>
+	@endforeach
+
+    
+  </div>
+</section>
 
    
 		

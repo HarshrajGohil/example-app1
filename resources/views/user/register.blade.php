@@ -2,6 +2,15 @@
 @extends('user.usermaster')
 @section('content')
 <div class='container'>
+   @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 <form class="row g-3" method="post" action = {{ route('user1.store') }}>
  @csrf
 <div class="col-md-6">
@@ -26,7 +35,7 @@
   </div>
   <div class="col-12">
     <label for="inputAddress" class="form-label">Contact No</label>
-    <input type="number" class="form-control" id="" placeholder="" name="contact_no">
+    <input type="text" class="form-control" id="" placeholder="" name="contact_no">
   </div>
  
  

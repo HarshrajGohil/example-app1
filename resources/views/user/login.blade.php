@@ -1,6 +1,15 @@
 @extends('user.usermaster')
 @section('content')
 <div class='container'>
+ @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 <form method="post" action = "checklogin">
  @csrf
   <div class="mb-3">
