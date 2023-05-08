@@ -52,6 +52,14 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         //
+
+        $request->validate([
+            'review_desc' => 'required', 'max:255',
+            'rev_stars' => 'required',
+            'user_name' => 'required',
+            'pro_name' => 'required',
+         
+        ]);
          $rev = new Review;
      
         

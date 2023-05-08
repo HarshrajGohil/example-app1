@@ -33,11 +33,22 @@
 
 <body>
     <div class="container-xxl position-relative bg-white d-flex p-0">
+     @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         
 
 
         <!-- Sign In Start -->
         <div class="container-fluid">
+         
+        
 
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
@@ -55,26 +66,26 @@
                                 <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Doggy Den</h3>
                                 
                             </a>
-                            <h3>Sign In</h3>
+                            <h3>Reset Password</h3>
                         </div>
                         <div class="form-floating mb-3">
                         <p>Hello</p>{{$email}}
                         <form method="post" action = {{ url('adminresetpsw') }}>
                          @csrf
                             <input type="text" class="form-control" 
-                            id="floatingInput" placeholder="OTP" name='otp'>
+                            id="floatingInput" placeholder="OTP" name='otp' required>
                             <label for="floatingInput">OTP</label>
                         </div>
                         <div class="form-floating mb-4">
                             <input type="password" class="form-control" id="floatingPassword"
                             name='password'
-                            placeholder="Password">
+                            placeholder="Password" required>
                             <label for="floatingInput">Enter Password</label>
                         </div>
                          <div class="form-floating mb-4">
                             <input type="password" class="form-control" id="floatingPassword"
                             name='cpassword'
-                            placeholder="confirm password">
+                            placeholder="confirm password" required>
                             <label for="floatingPassword">Confirm Password</label>
                         </div> 
 

@@ -89,7 +89,7 @@ class UserController extends Controller
             'email' => ['required', 'unique:user', 'max:30'],
             'password' => 'required', 'min:6','max:20',
             'address' => 'required', 'max:255',
-            'contact_no' => 'required|digits:10',
+            'contact_no' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:10',
          
         ]);
 
@@ -212,7 +212,7 @@ class UserController extends Controller
 
         else 
         {
-            return  redirect('/adminlogin')->with("error","Check Id And Password");
+            return  redirect('/adminlogin')->with("error","Email And Password is Required");
 
         }
 
@@ -280,13 +280,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-        User::destroy($id);
 
-        Session::flash('message', 'Delete successfully!');
-        Session::flash('alert-class', 'alert-success');
-        return redirect('user1')->with('delete','User Deleted..');; 
-    }
+   
+  
 }

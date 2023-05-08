@@ -3,11 +3,20 @@
 @section('content')
 
 <div class="container-fluid pt-4 px-4" class="center">
+  @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
                           
-                            <form method="post" action="{{ route('product.update',$prod->id )}}">
+                            <form method="post" action="{{ route('product.update',$prod->id )}}" enctype='multipart/form-data'>
                             @csrf
                                   @method('PUT')
                                 <div class="mb-3">

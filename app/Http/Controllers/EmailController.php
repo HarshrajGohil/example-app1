@@ -14,6 +14,8 @@ class EmailController extends Controller
     //  
 function resetdata(Request $request)
 {
+    
+  
         $otpdata = $request->otp;
         $psw = $request->password;
         $npsw = $request->cpassword; 
@@ -53,6 +55,18 @@ function resetdata(Request $request)
 
 function adminresetdata(Request $request)
 {
+    // $request->validate([
+    //     'otp' => 'required',
+    //     'password' => 'required',
+    //     'cpassword' => ['required'],
+     
+    // ]);
+//    $request->validate([
+//        'otp' => ['required','digits:06'],
+//        'password' => 'required', 'min:6','max:20',
+//        'confirm password' => 'required', 'min:6','max:20',
+     
+//    ]);
         $otpdata = $request->otp;
         $psw = $request->password;
         $npsw = $request->cpassword; 
@@ -113,6 +127,13 @@ function generateNumericOTP($n)
 
     public function checkemail(Request $request)
     {
+       
+        $request->validate([
+            
+            'email' => ['required','max:30'],
+            
+         
+        ]);
 
             $userdata = DB::table('user')->where('email',$request->email)->get(); 
             if($userdata->isEmpty()) 
@@ -170,6 +191,14 @@ function generateNumericOTP($n)
 
     public function admincheckemail(Request $request)
     {
+       
+        $request->validate([
+            
+            'email' => ['required'],
+           
+         
+        ]);
+
 
             $userdata = DB::table('user')->where('email',$request->email)->get(); 
             if($userdata->isEmpty()) 
@@ -226,6 +255,14 @@ function generateNumericOTP($n)
     }
     public function index(Request $request)
     {
+        $request->validate([
+            'name' => 'required|regex:/^[a-zA-Z]+$/u|max:20|',
+            'email' => ['required','max:30'],
+            'mobile' => 'required|digits:10',
+            'message' => 'required', 'max:255',
+            
+         
+        ]);
 
         $data = [
             'name'=>$request->name,

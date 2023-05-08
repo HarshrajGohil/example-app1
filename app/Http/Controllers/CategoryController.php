@@ -44,6 +44,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'cate_name' => 'required',
+            'cate_desc' => 'required',
+            'cate_image' => ['required'],
+         
+        ]);
+      
 
         $file = $request->file('cate_image');
         $destinationPath = 'img'.'/'.time();
@@ -52,6 +59,13 @@ class CategoryController extends Controller
         $path = $destinationPath."/".$file->getClientOriginalName();
 
 
+
+ // $request->validate([
+ //           'categoryname' => 'required',
+ //           'categorydescription' => 'required',
+//            'categoryimage' => 'required'
+         
+//        ]);
 
         $cat = new Category;
  
@@ -77,6 +91,7 @@ class CategoryController extends Controller
 
     public function updatecategory(Request $request)
     {
+      
         $adminid = $request->session()->get('aid'); 
         $userdata = Category::where('id',$adminid)->get();
 
@@ -133,19 +148,47 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'cate_name' => 'required',
+            'cate_desc' => 'required',
+            'cate_image' => ['required'],
+         
+        ]);
+      
         
         $category = Category::find($id);
  
         $category->cate_name = $request->cate_name;
 
-        $category->cate_desc = $request->cate_desc;
-        $category->cate_image = $request->cate_image;
+        $category->cate_desc = $request->cate_desc; 
+
+       
+
+        if($request->file('cate_image'))
+        {
+            $file = $request->file('cate_image');
+            $destinationPath = 'img'.'/'.time();
+    
+            $file->move($destinationPath,$file->getClientOriginalName());
+            $path = $destinationPath."/".$file->getClientOriginalName(); 
+            $category->cate_image = $path; 
+
+        }
+        else 
+        {
+                $path = $category->cate_image;
+
+        }  
+        $category->save();
+        return back()->with('success','Category Updated..');
+
+
+       
+       
 
          
-        $category->save();
     
     
-        return back()->with('success','Category Updated..');
     }
 
     /**

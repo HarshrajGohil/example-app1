@@ -8,22 +8,33 @@
     @endif
 
 <div class="container-fluid pt-4 px-4" class="center">
+    @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
 
-                            <form method="post" action="{{ route('category.update',$cat->id )}}">
+                            <form method="post" action="{{ route('category.update',$cat->id )}}" enctype='multipart/form-data'>
                              @csrf
                                     @method('PUT')
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Category Name</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
-                                        aria-describedby="name" name="cate_name" value = "{{$cat->cate_name}}">
+                                        aria-describedby="name"  value = "{{$cat->cate_name}}"
+                                        name="cate_name">
                                     
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Catgegory Description</label>
-                                   <textarea cols='100' rows='5' name='cate_desc'>
+                                   <textarea cols='100' rows='5'
+                                    name='cate_desc'>
                               {{$cat->cate_desc}}
                               </textarea>
                                 </div>

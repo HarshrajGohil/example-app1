@@ -64,7 +64,7 @@
                                
                         </a>
                         
-                        <a><i class="fas fa-edit text-primary"></i></a>
+                
                         <form action="{{ route('review.destroy',$value['rid']) }}" method="POST">
    
                 

@@ -3,6 +3,15 @@
 @section('content')
 
 <div class="container-fluid pt-4 px-4" class="center">
+       @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
@@ -17,8 +26,8 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Review Stars</label>
-                                    <input type="number" class="form-control" id="exampleInputPassword1" 
-                                    name="rev_stars">
+                                    <input type="number" class="form-control" id="exampleInputPassword1" min=1 max=5
+                                     name="rev_stars">
                                 </div>
 
                                     <div class="mb-3">
@@ -32,7 +41,8 @@
                                 </div>
                                     <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Product Name </label>
-                                    <select class="form-select" aria-label="Default select example" name="pro_name">
+                                    <select class="form-select" aria-label="Default select example" 
+                                    name="pro_name">
                                      @foreach($pro as  $p)
                                      <option value={{$p['id']}}>{{$p['pro_name']}}</option>
                                      @endforeach

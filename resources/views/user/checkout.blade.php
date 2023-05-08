@@ -2,6 +2,15 @@
 @section('content')
 
     <div class="container col-8 my-5 br-2 rounded">
+     @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
         <div class="row g-3">
             <div class="col-4 order-md-last">
                 <h4 class="d-flex justify-content-between align-item-center">

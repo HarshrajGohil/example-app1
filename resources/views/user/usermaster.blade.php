@@ -179,7 +179,6 @@
               <li><a href="{{ url('register') }}" class="py-2 d-block">Register</a></li>
               <li><a href="{{ url('login') }}" class="py-2 d-block">Login</a></li>
               <li><a href="{{ url('editprofile') }}" class="py-2 d-block">My Account</a></li>
-              <li><a href="#" class="py-2 d-block">My Order</a></li>
                 <li><a href="{{ url('aboutus') }}" class="py-2 d-block">About us</a></li>
             </ul>
 					</div>

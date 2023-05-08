@@ -224,6 +224,8 @@ Route::any('/logout', [UserController::class, 'logout']);
 Route::any('/search', [ProductController::class, 'searchdata']);
 
 
+
+
 Route::any('/adminlogout', [UserController::class, 'adminlogout']);
 
 Route::any('/myprofile', [UserController::class, 'adminprofile']);

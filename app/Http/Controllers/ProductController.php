@@ -48,7 +48,28 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'pro_name' => 'required',
+            'pro_desc' => 'required',
+            'pro_image' => 'required',
+            'pro_price' => 'required',
+            'pro_quan' => 'required',
+            'pro_meas' => 'required',
+            'subcat_name' => 'required',
+         
+        ]);
         //
+  //      $request->validate([
+ //           'Product name' => 'required|regex:/^[a-zA-Z]+$/u|max:20|',
+//            'Product description' => 'required',
+//            'Product Image' => 'required',
+//            'Product Price' => 'required',
+//            'Product Quantity' => 'required',
+//            'Product Measurement' => 'required',
+//            'Subcategory Name' => 'required',
+//            'Multiple Images' => 'required',
+         
+ //       ]); 
         $prod = new Product; 
 
         
@@ -197,14 +218,41 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'pro_name' => 'required',
+            'pro_desc' => 'required',
+            'pro_image' => 'required',
+            'pro_price' => 'required',
+            'pro_quan' => 'required',
+            'pro_meas' => 'required',
+            'cat_id' => 'required',
+         
+        ]);
          $prod = Product::find($id);
          $prod->pro_name = $request->pro_name;
          $prod->pro_desc = $request->pro_desc;
-         $prod->pro_image = $request->pro_image;
+        
          $prod->pro_price = $request->pro_price;
          $prod->pro_quantity = $request->pro_quan;
          $prod->pro_measurement = $request->pro_meas;
     
+         if($request->file('pro_image'))
+         {
+             $file = $request->file('pro_image');
+             $destinationPath = 'img'.'/'.time();
+     
+             $file->move($destinationPath,$file->getClientOriginalName());
+             $path = $destinationPath."/".$file->getClientOriginalName(); 
+             $prod->pro_image = $path; 
+ 
+         }
+         else 
+         {
+                 $path = $prod->pro_image;
+ 
+         }  
+
+
  
           
          $prod->save();

@@ -1,9 +1,18 @@
 @extends('user.usermaster')
 @section('content')
+		 @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
 <section class="text-center">
 
-
+			
   <h3 class="mb-5">Contact us</h3>
 
   <div class="row">

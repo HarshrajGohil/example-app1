@@ -65,7 +65,7 @@
                                
                         </a>
                         
-                        <a><i class="fas fa-edit text-primary"></i></a>
+                    
                         <form action="{{ route('doctor.destroy',$value['id']) }}" method="POST">
                         
                         

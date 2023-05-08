@@ -48,6 +48,13 @@ class SubcategoryController extends Controller
     public function store(Request $request)
     {
         //
+
+        $request->validate([
+            'sub_cate_name' => 'required',
+            'sub_cate_desc' => 'required',
+            'cate_name' => 'required',
+         
+        ]);
         echo "in store ";
 
         $subcat = new Subcategory;
@@ -103,6 +110,14 @@ class SubcategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'sub_cate_name' => 'required',
+            'sub_cate_desc' => 'required',
+            'cate_name' => 'required',
+         
+        ]);
+       
+
         $subcategory = Subcategory::find($id);
  
         $subcategory->sub_cate_name = $request->sub_cate_name;

@@ -44,6 +44,18 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         // 
+        $request->validate([
+            'first_name' => 'required|regex:/^[a-zA-Z]+$/u|max:20|',
+            'last_name' => 'required|regex:/^[a-zA-Z]+$/u|max:20|',
+            'email' => ['required','max:30'],
+            'address' => 'required', 'max:255',
+            'contact_no' => 'required|digits:10',
+           // 'nameoncard' => 'required','|regex:/^[a-zA-Z]+$/u|max:20|',
+           // 'cardnumber' => 'required','max:16',
+           // 'expiration' => 'required','date', 
+           // 'cvv' => 'required','digits:3', 
+         
+        ]);
 
         $userid = $request->session()->get('uid'); 
 

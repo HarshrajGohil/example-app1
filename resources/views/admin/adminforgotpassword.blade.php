@@ -38,11 +38,21 @@
 
         <!-- Sign In Start -->
         <div class="container-fluid">
+       @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
             <div class="row h-100 align-items-center justify-content-center" style="min-height: 100vh;">
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                     <div class="text-center">
+                     <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Doggy Den</h3>
                     <img class="rounded-circle" src="img/user2.png" alt="" style="width: 200px; height: 200px;">
                     </div>
                      @if ($message = Session::get('error'))
@@ -52,7 +62,7 @@
     @endif
                         <div class="d-flex align-items-center justify-content-between mb-3">
                             <a href="" class="">
-                                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Doggy Den</h3>
+                               
                                 
                                 </a>
                             <h3>Forgot Password</h3>

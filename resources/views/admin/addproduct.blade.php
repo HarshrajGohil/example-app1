@@ -3,6 +3,15 @@
 @section('content')
 
 <div class="container-fluid pt-4 px-4" class="center">
+  @if (count($errors) > 0)
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
                 <div class="row g-4">
                     <div class="col-sm-12 col-xl-12">
                         <div class="bg-light rounded h-100 p-4">
@@ -32,7 +41,7 @@
 
                                  <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label">Product Quantity</label>
-                                    <input type="number" class="form-control" id="exampleInputPassword1" name="pro_quan">
+                                    <input type="number" class="form-control" id="exampleInputPassword1" name="pro_quan" min=1>
                                 </div>
 
                                  <div class="mb-3">
