@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>DASHMIN - Bootstrap Admin Template</title>
+    <title>Doggy Den</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -43,6 +43,7 @@
                 <div class="col-12 col-sm-8 col-md-6 col-lg-5 col-xl-4">
                     <div class="bg-light rounded p-4 p-sm-5 my-4 mx-3">
                     <div class="text-center">
+                    <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Doggy Den</h3>
                     <img class="rounded-circle" src="img/user2.png" alt="" style="width: 200px; height: 200px;">
                     </div>
                      @if ($message = Session::get('error'))
@@ -51,10 +52,10 @@
         </div>
     @endif
                         <div class="d-flex align-items-center justify-content-between mb-3">
-                            <a href="index.html" class="">
-                                <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>Doggy Den</h3>
+                        
+                               
                                 
-                            </a>
+                            
                             <h3>Sign In</h3>
                         </div>
                         <div class="form-floating mb-3">

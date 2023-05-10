@@ -52,7 +52,7 @@
                             <td>{{ $value['is_admin']}}</td>
                         <td><a class="" href="">
                                 
-                               <i class="fas fa-eye"></i>
+                             {{--  <i class="fas fa-eye"></i> --}}
                               
                                
                         </a>
@@ -73,6 +73,7 @@
                      @endforeach
                 </tbody>
             </table>
+            <br>
             <div class="d-flex justify-content-center">
              {{ $user->links() }}
             </div>

@@ -113,7 +113,7 @@ class SubcategoryController extends Controller
         $request->validate([
             'sub_cate_name' => 'required',
             'sub_cate_desc' => 'required',
-            'cate_name' => 'required',
+            //'cate_name' => 'required',
          
         ]);
        

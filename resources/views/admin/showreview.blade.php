@@ -71,7 +71,7 @@
                     @csrf
                     @method('DELETE')
                     <a class="" href="">
-                    <button type='submit' class="fas fa-trash text-primary" onclick='return confirm("r u sure u want to delete this data ?")'></button></a>
+                    <button type='submit' class="fas fa-trash text-primary" onclick='return confirm("Are you sure you want to delete this data ?")'></button></a>
                 </form>
                                                
 
