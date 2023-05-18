@@ -45,7 +45,7 @@ Route::get('/data', function () {
 }); 
 
 
-// Route::get('/dashboard', function () {
+// Route::get('/dashboard', function () 
 //     return view('admin.dashboard');
 // });
 

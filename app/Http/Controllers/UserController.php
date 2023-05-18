@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User; 
 use App\Models\Review;
+use App\Models\Product; 
+use App\Models\Order;
+
 
 use Session;
 use DB;
@@ -37,19 +40,58 @@ class UserController extends Controller
         
         $productCount = DB::table('product')->count();
 
-        $orderCount = DB::table('billing')->count();
+        $orderCount = DB::table('order')->count();
 
-        $reviewCount = DB::table('review')->count();
+        $reviewCount = DB::table('review')->count(); 
 
 
-        $data = [
+
+        $viewer = User::select(DB::raw("count(id) as count"))  
+        ->orderBy("created_at")  
+        ->groupBy(DB::raw("year(created_at)"))  
+        ->where('is_admin','!=',1)
+        ->get()->toArray();  
+
+        $viewer = array_column($viewer, 'count');  
+      
+        $click = Product::select(DB::raw("count(id) as count"))  
+        ->orderBy("created_at")  
+        ->groupBy(DB::raw("year(created_at)"))  
+        ->get()->toArray();  
+        $click = array_column($click, 'count');  
+        
+        
+        $review = Review::select(DB::raw("count(id) as count"))  
+        ->orderBy("created_at")  
+        ->groupBy(DB::raw("year(created_at)"))  
+        ->get()->toArray();  
+        $review = array_column($review, 'count');   
+
+
+        $order = Order::select(DB::raw("count(id) as count"))  
+        ->orderBy("created_at")  
+        ->groupBy(DB::raw("year(created_at)"))  
+        ->get()->toArray();  
+        $order = array_column($order, 'count'); 
+
+
+
+ 
+
+       $data = [
             'user'=>$userCount,
             'products'=>$productCount,
             'orders'=>$orderCount,
             'reviews'=>$reviewCount,
 
-        ];
-        return view('admin.dashboard',$data);
+        ]; 
+
+
+      
+        return view('admin.dashboard',$data)->with('viewer',json_encode($viewer,JSON_NUMERIC_CHECK))  
+        ->with('click',json_encode($click,JSON_NUMERIC_CHECK))->
+        with('review',json_encode($review,JSON_NUMERIC_CHECK))->
+        with('order',json_encode($order,JSON_NUMERIC_CHECK));
 
       
    

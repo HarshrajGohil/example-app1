@@ -112,6 +112,14 @@
                             
                         </div>
                     </div>
+                       <div class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        <i class="fas fa-shopping-cart"></i>
+                        Orders</a>
+                        <div class="dropdown-menu bg-transparent border-0">
+                            <a href="{{ route('order.index') }}" class="dropdown-item">Show Orders</a>
+                        </div>
+                    </div>
 
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">

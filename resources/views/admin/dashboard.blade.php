@@ -1,5 +1,7 @@
 @extends('admin.master')
 @section('content')
+<script src="https://raw.githubusercontent.com/nnnick/Chart.js/master/dist/Chart.bundle.js"></script>  
+
 <div class="container-fluid pt-4 px-4">
     <div class="row g-4">
         <div class="col-sm-6 col-xl-3">
@@ -52,28 +54,8 @@
 
 
 <!-- Sales Chart Start -->
-<div class="container-fluid pt-4 px-4">
-    <div class="row g-4">
-        <div class="col-sm-12 col-xl-6">
-            <div class="bg-light text-center rounded p-4">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Worldwide Sales</h6>
-                    <a href="">Show All</a>
-                </div>
-                <canvas id="worldwide-sales"></canvas>
-            </div>
-        </div>
-        <div class="col-sm-12 col-xl-6">
-            <div class="bg-light text-center rounded p-4">
-                <div class="d-flex align-items-center justify-content-between mb-4">
-                    <h6 class="mb-0">Salse & Revenue</h6>
-                    <a href="">Show All</a>
-                </div>
-                <canvas id="salse-revenue"></canvas>
-            </div>
-        </div>
-    </div>
-</div> 
+
+
 <!-- Sales Chart End -->
 
 
@@ -269,5 +251,84 @@
             </div>
         </div>
     </div>
-</div>--}}
+</div>--}} 
+
+
+
+<script>  
+    var year = ['2023','2024','2025', '2026'];  
+    var data_click = <?php echo $click; ?>;  
+    var data_viewer = <?php echo $viewer; ?>;   
+
+        var data_review = <?php echo $review; ?>;  
+
+    var data_order = <?php echo $order; ?>;  
+
+  
+    var barChartData = {  
+        labels: year,  
+        datasets: [{  
+            label: 'Products',  
+            backgroundColor: "rgba(220,220,220,0.5)",  
+            data: data_click  
+        }, {  
+            label: 'User',  
+            backgroundColor: "rgba(151,187,205,0.5)",  
+            data: data_viewer  
+        },
+         {  
+            label: 'Reviews',  
+            backgroundColor: "#0000ff",  
+            data: data_review 
+        },
+         {  
+            label: 'Order',  
+            backgroundColor: "#000",  
+            data: data_order  
+        }
+        
+        
+        ]  
+    };  
+  
+    window.onload = function() {  
+        var ctx = document.getElementById("canvas").getContext("2d");  
+        window.myBar = new Chart(ctx, {  
+            type: 'bar',  
+            data: barChartData,  
+            options: {  
+                elements: {  
+                    rectangle: {  
+                        borderWidth: 2,  
+                        borderColor: 'rgb(0, 255, 0)',  
+                        borderSkipped: 'bottom'  
+                    }  
+                },  
+                responsive: true,  
+                title: {  
+                    display: true,  
+                    text: 'Yearly Website Visitor'  
+                }  
+            }  
+        });  
+  
+    };  
+</script>  
+  
+<div class="container">  
+    <div class="row">  
+        <div class="col-md-10 col-md-offset-1">  
+            <div class="panel panel-default">  
+                <div class="panel-heading">Dashboard</div>  
+                <div class="panel-body">  
+                    <canvas id="canvas" height="280" width="600"></canvas>  
+                </div>  
+            </div>  
+        </div>  
+    </div>  
+</div>  
+  
+
+
+
 @endsection

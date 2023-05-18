@@ -75,6 +75,10 @@
                    
                     <hr>
                     <h4>Payment</h4>
+                     <div class="form-check">
+                        <input type="radio" class="form-check-input" name="card" id='cod' value='cash_on_delivery'>
+                        <label class="form-check-label">Cash On Delivery</label>
+                    </div>
                     <div class="form-check">
                         <input type="radio" class="form-check-input" name="card" id='card' value='credit'>
                         <label class="form-check-label">Credit Card</label>
