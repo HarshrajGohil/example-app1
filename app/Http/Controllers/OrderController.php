@@ -23,7 +23,9 @@ class OrderController extends Controller
     public function index()
     {
         //
-        $data = Order::join('user', 'user.id', '=', 'order.u_id')->paginate(5);
+        $data = Order::join('user', 'user.id', '=', 'order.u_id')->paginate(5); 
+
+        
         
         return view('admin.showorder',['order'=>$data]);
     }

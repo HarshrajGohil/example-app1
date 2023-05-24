@@ -8,7 +8,15 @@
 <div class="container-fluid pt-4 px-4">
     
 </div>
+
+
+     {{-- <h3>New Date Format: {{ Date_Format1('2022-02-26','m/d/Y')  }}</h3> --}}
+
 <!-- Sale & Revenue End -->
+
+<?php  ini_set('memory_limit', '-1'); 
+?>
+
 
 
 
@@ -49,10 +57,15 @@
 
                         @foreach($temp as $valuedata) 
 
-                        <?php echo "Product Name : ".$valuedata->pro_id."<br>"; 
+                      
 
+
+                        <?php
+
+                    print_r(myMethod($valuedata->pro_id));
 
                         echo "User Name :".$valuedata->user_id."<br>";
+
                         echo "Quantity:".$valuedata->quantity."<br>"; 
                         echo "Price:"."200"."<br>"; 
 
